@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+
+  list-style: none;
+  padding: 12px;
+  gap: 12px;
+}
+
+.list section {
+  display: flex;
+  /* justify-content: flex-end; */
+  gap: 12px;
+}
+
+.list:first-child {
+  left: 0;
+}

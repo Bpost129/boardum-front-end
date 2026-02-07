@@ -1,16 +1,20 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 
+import styles from './NavBar.module.css'
+
 const NavBar = ({ user, handleLogout }) => {
   return (
     <nav>
       {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
+        <ul className={styles.list}>
           <li><NavLink to="/">Home</NavLink></li>
-          <li><NavLink to="/profile">Profile</NavLink></li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+          <section>
+            <li>Welcome, {user.name.split(' ')[0]}!</li>
+            <li><NavLink to="/profile">Profile{}</NavLink></li>
+            {/* <li><NavLink to="/profiles">Profiles</NavLink></li> */}
+            <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+          </section>
         </ul>
       :
         <ul>

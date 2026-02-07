@@ -18,7 +18,7 @@ const Profile = ({ user }) => {
   }, [])
 
   if (!profile) {
-    return <main className={styles.container}><h1>Loading...</h1></main>
+    return <main className={styles.container}> <></> </main>
   }
   
   return (

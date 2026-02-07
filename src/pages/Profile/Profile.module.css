@@ -13,3 +13,13 @@
   width: 200px;
   border-radius: 50%;
 }
+
+.container a {
+  text-decoration: none;
+}
+
+.container button {
+  padding: 6px 12px;
+  border-radius: 12px;
+  background-color: rgb(107, 107, 107);
+}
