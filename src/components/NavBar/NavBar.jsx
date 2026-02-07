@@ -10,16 +10,18 @@ const NavBar = ({ user, handleLogout }) => {
         <ul className={styles.list}>
           <li><NavLink to="/">Home</NavLink></li>
           <section>
-            <li>Welcome, {user.name.split(' ')[0]}!</li>
+            <li>Hello, {user.name.split(' ')[0]}!</li>
             <li><NavLink to="/profile">Profile{}</NavLink></li>
             {/* <li><NavLink to="/profiles">Profiles</NavLink></li> */}
             <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
           </section>
         </ul>
       :
-        <ul>
-          <li><NavLink to="/auth/login">Log In</NavLink></li>
-          <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
+        <ul className={styles.list}>
+          <section>
+            <li><NavLink to="/auth/login">Log In</NavLink></li>
+            <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
+          </section>
         </ul>
       }
     </nav>
