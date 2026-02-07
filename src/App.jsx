@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -16,12 +16,16 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
+
+import { getAllBoards } from './services/boardService'
 
 // styles
 import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState(null)
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -34,11 +38,21 @@ function App() {
     setUser(authService.getUser())
   }
 
+
+    
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profileData = await profileService.getProfile(user.profile)
+      setProfile(profileData)
+    }
+    fetchProfile()
+  }, [user])
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} profile={profile} />} />
         {/* <Route
           path="/profiles"
           element={
@@ -51,7 +65,7 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute user={user}>
-              <Profile user={user} />
+              <Profile user={user} profile={profile} />
             </ProtectedRoute>
           }
         />
