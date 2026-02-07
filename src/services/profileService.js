@@ -23,7 +23,7 @@ async function getProfile(profileId) {
         'Content-Type': 'application/json'
       }
     })
-    return res.json()
+    return await res.json()
   } catch (err) {
     throw new Error(err)
   }
