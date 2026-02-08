@@ -53,9 +53,9 @@ const Landing = ({ user, boards, handleAddBoard }) => {
             </div>
             }
             {!showAddForm && 
-              <div>
+              <div onClick={() => setShowAddForm(!showAddForm)}>
                 <img className={styles.addImg} src={addBoard} alt="add board icon" />
-                <h3 onClick={() => setShowAddForm(!showAddForm)}>Create a Board</h3>
+                <h3>Create a Board</h3>
               </div>
             }
           </section>
