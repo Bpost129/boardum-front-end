@@ -6,11 +6,13 @@ import addBoard from '../../assets/addBoard.png'
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user, boards, handleAddBoard }) => {
+const Landing = ({ user, boards, handleAddBoard, handleDeleteBoard }) => {
+  
   const [showAddForm, setShowAddForm] = useState(false)
   const [formData, setFormData] = useState({
     title: ''
   })
+
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -19,6 +21,10 @@ const Landing = ({ user, boards, handleAddBoard }) => {
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleDelete = (boardId) => {
+    handleDeleteBoard(boardId)
   }
 
   return (
@@ -62,7 +68,7 @@ const Landing = ({ user, boards, handleAddBoard }) => {
           <h2>Your Boards</h2>
           <section className={styles.userBoards}>
             {boards.map(board => 
-              <BoardCard key={board._id} board={board} />
+              <BoardCard key={board._id} board={board} handleDelete={handleDelete} />
             )}
           </section>
         </>

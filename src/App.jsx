@@ -45,7 +45,11 @@ function App() {
     navigate(`/boards/${newBoard._id}`)
   }
 
-
+  const handleDeleteBoard = async (boardId) => {
+    const deletedBoard = await boardService.deleteBoard(boardId)
+    setBoards(boards.filter(b => b._id !== deletedBoard._id))
+    navigate('/')
+  }
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -74,6 +78,7 @@ function App() {
               profile={profile} 
               boards={boards}
               handleAddBoard={handleAddBoard}
+              handleDeleteBoard={handleDeleteBoard}
             />
           } 
         />

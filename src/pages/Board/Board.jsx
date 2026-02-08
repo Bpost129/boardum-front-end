@@ -9,10 +9,24 @@ import { getAllLists } from '../../services/listService'
 import styles from './Board.module.css'
 
 const Board = () => {
+
   const [board, setBoard] = useState({})
   const [lists, setLists] = useState([])
+  const [showEditForm, setShowEditForm] = useState(false)
+  const [updateFormData, setUpdateFormData] = useState({
+    title: board.title
+  })
   const { boardId } = useParams()
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    // handleUpdateBoard(formData)
+  }
+
+  const handleChange = e => {
+    setUpdateFormData({ ...updateFormData, [e.target.name]: e.target.value })
+  }
+  
   useEffect(() => {
     const fetchBoard = async () => {
       const boardData = await getBoard(boardId)
@@ -30,7 +44,24 @@ const Board = () => {
 
   return (
     <main className={styles.container}>
-      <h1>{board.title}</h1>
+      {showEditForm && 
+      <form className={styles.editForm} onSubmit={handleSubmit}>
+        <input 
+        required
+        type="text" 
+        name="title"
+        id="title-input"
+        placeholder={board.title}
+        value={updateFormData.title}
+        onChange={handleChange}
+        />
+        <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
+        <button type="submit">✅</button>
+      </form>
+      }
+      {!showEditForm && 
+      <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
+      }
       <div className={styles.board}>
         {lists.map(list =>
           <List key={list._id} list={list} /> 

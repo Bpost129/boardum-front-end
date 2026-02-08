@@ -45,3 +45,17 @@ export async function createBoard(boardFormData) {
     throw new Error(err)
   }
 }
+
+export async function deleteBoard(boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}

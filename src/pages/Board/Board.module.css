@@ -11,3 +11,7 @@
   align-items: flex-start;
   gap: 22px;
 }
+
+.editForm {
+  margin-top: 22px;
+}
