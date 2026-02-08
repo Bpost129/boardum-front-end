@@ -1,22 +1,9 @@
-// import { useState, useEffect } from 'react'
-
 import BoardCard from '../../components/BoardCard/BoardCard'
-
-// import { getAllBoards } from '../../services/boardService'
 
 // css
 import styles from './Landing.module.css'
 
 const Landing = ({ user, boards }) => {
-  // const [boards, setBoards] = useState([])
-
-  // useEffect(() => {
-  //   const fetchBoards = async () => {
-  //     const boardsData = await getAllBoards()
-  //     setBoards(boardsData)
-  //   }
-  //   fetchBoards()
-  // }, [])
 
   return (
 
@@ -41,11 +28,7 @@ const Landing = ({ user, boards }) => {
             {boards.map(board => 
               <BoardCard key={board._id} board={board} />
             )}
-
           </section>
-        
-        
-        
         </>
       }
     </main>

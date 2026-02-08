@@ -39,28 +39,20 @@ function App() {
     setUser(authService.getUser())
   }
 
-
-  
-    useEffect(() => {
-    }, [])
-    
-    
-    
-    
-    useEffect(() => {
-      const fetchProfile = async () => {
-        const profileData = await profileService.getProfile(user.profile)
-        setProfile(profileData)
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profileData = await profileService.getProfile(user.profile)
+      setProfile(profileData)
+    }
+    fetchProfile()
+    .then(() => {
+      const fetchBoards = async () => {
+        const boardsData = await getAllBoards()
+        setBoards(boardsData)
       }
-      fetchProfile()
-      .then(() => {
-        const fetchBoards = async () => {
-          const boardsData = await getAllBoards()
-          setBoards(boardsData)
-        }
-        fetchBoards()
-      })
-    }, [user])
+      fetchBoards()
+    })
+  }, [user])
 
   return (
     <>
