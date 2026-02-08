@@ -22,7 +22,7 @@
 }
 
 .greeting {
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.516);
   padding: 0 12px;
   border-radius: 12px;
 }
