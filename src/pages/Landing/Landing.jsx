@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 
 import BoardCard from '../../components/BoardCard/BoardCard'
 
-import { getAllBoards } from '../../services/boardService'
+// import { getAllBoards } from '../../services/boardService'
 
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user }) => {
-  const [boards, setBoards] = useState([])
+const Landing = ({ user, boards }) => {
+  // const [boards, setBoards] = useState([])
 
-  useEffect(() => {
-    const fetchBoards = async () => {
-      const boardsData = await getAllBoards()
-      setBoards(boardsData)
-    }
-    fetchBoards()
-  }, [])
+  // useEffect(() => {
+  //   const fetchBoards = async () => {
+  //     const boardsData = await getAllBoards()
+  //     setBoards(boardsData)
+  //   }
+  //   fetchBoards()
+  // }, [])
 
   return (
 

@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profile from './pages/Profile/Profile'
 // import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Board from './pages/Board/Board'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -17,6 +18,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import { getAllBoards } from './services/boardService'
 
 // styles
 import './App.css'
@@ -24,6 +26,7 @@ import './App.css'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState(null)
+  const [boards, setBoards] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -35,20 +38,35 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
+
+
+  
+    useEffect(() => {
+    }, [])
     
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const profileData = await profileService.getProfile(user.profile)
-      setProfile(profileData)
-    }
-    fetchProfile()
-  }, [user])
+    
+    
+    
+    useEffect(() => {
+      const fetchProfile = async () => {
+        const profileData = await profileService.getProfile(user.profile)
+        setProfile(profileData)
+      }
+      fetchProfile()
+      .then(() => {
+        const fetchBoards = async () => {
+          const boardsData = await getAllBoards()
+          setBoards(boardsData)
+        }
+        fetchBoards()
+      })
+    }, [user])
 
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} />} />
+        <Route path="/" element={<Landing user={user} profile={profile} boards={boards}/>} />
         {/* <Route
           path="/profiles"
           element={
@@ -62,6 +80,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Profile user={user} profile={profile} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/boards/:boardId"
+          element={
+            <ProtectedRoute user={user}>
+              <Board user={user} profile={profile} />
             </ProtectedRoute>
           }
         />
