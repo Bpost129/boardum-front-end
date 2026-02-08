@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+import Card from '../Card/Card'
+
 import { getAllCards } from '../../services/cardService'
 
 import styles from './List.module.css'
@@ -22,7 +24,7 @@ const List = ({ list }) => {
     <div className={styles.list}>
       <h3>{list.title}</h3>
       {cards.map(card =>
-        <p key={card._id}>{card.title}</p>
+        <Card key={card._id} card={card} />
       )}
     </div>
   )

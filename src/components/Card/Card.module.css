@@ -1,0 +1,13 @@
+.card {
+  width: 260px;
+  height: 125px;
+  padding: 6px;
+  text-align: start;
+  border-radius: 12px;
+  
+  background-color: rgb(98, 112, 107);
+}
+
+.card h4 {
+  margin: 2px;
+}
