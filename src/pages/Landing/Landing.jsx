@@ -5,11 +5,22 @@ import BoardCard from '../../components/BoardCard/BoardCard'
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user, boards }) => {
+const Landing = ({ user, boards, handleAddBoard }) => {
   const [showAddForm, setShowAddForm] = useState(false)
+  const [formData, setFormData] = useState({
+    title: ''
+  })
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    handleAddBoard(formData)
+  }
+
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   return (
-
     <main className={styles.container}>
       <h1>WELCOME TO BOARDUM</h1>
       {!user &&
@@ -23,15 +34,27 @@ const Landing = ({ user, boards }) => {
           <h4 className={styles.caption}>Create a new board from scratch or try out a template</h4>
           <section className={styles.templates}>
             {showAddForm && 
-              <form action="">
-                
-              </form>
-            }
-            {!showAddForm && <button onClick={() => setShowAddForm(!showAddForm)}>Add</button>}
-            
             <div>
-              <h3>template</h3>
+              <form className={styles.addForm} onSubmit={handleSubmit}>
+                <input 
+                required
+                type="text" 
+                name="title"
+                id="title-input"
+                placeholder="Add title..."
+                value={formData.title}
+                onChange={handleChange}
+                />
+                <button onClick={() => setShowAddForm(!showAddForm)}>❌</button>
+                <button type="submit">✅</button>
+              </form>
             </div>
+            }
+            {!showAddForm && 
+              <div>
+                <h3 onClick={() => setShowAddForm(!showAddForm)}>Create a Board</h3>
+              </div>
+            }
           </section>
           <h2>Your Boards</h2>
           <section className={styles.userBoards}>

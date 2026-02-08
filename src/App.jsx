@@ -39,6 +39,14 @@ function App() {
     setUser(authService.getUser())
   }
 
+  const handleAddBoard = async (boardFormData) => {
+    const newBoard = await boardService.createBoard(boardFormData)
+    setBoards([newBoard, ...boards])
+    navigate(`/boards/${newBoard._id}`)
+  }
+
+
+
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(user.profile)
@@ -58,7 +66,17 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} boards={boards}/>} />
+        <Route 
+          path="/" 
+          element={
+            <Landing 
+              user={user} 
+              profile={profile} 
+              boards={boards}
+              handleAddBoard={handleAddBoard}
+            />
+          } 
+        />
         {/* <Route
           path="/profiles"
           element={

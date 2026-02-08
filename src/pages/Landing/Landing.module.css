@@ -12,6 +12,29 @@
   font-weight: 500;
 }
 
+.addForm {
+  margin: 0 auto;
+  padding: 22px 0 16px 16px;
+  width: 372px;
+  display: flex;
+  text-align: start;
+  font-weight: 600;
+  /* letter-spacing: 1.5px; */
+  background-color: rgb(92, 92, 92);
+  
+
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid rgb(193, 193, 193, .5);
+}
+
+.addForm input {
+  width: 200px;
+  background-color: rgb(92, 92, 92);
+  color: white;
+  border-radius: 6px;
+  border-style: solid;
+}
+
 .templates {
   display: flex;
   align-items: center;
