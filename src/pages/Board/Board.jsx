@@ -32,10 +32,8 @@ const Board = () => {
     <main className={styles.container}>
       <h1>{board.title}</h1>
       <div className={styles.board}>
-        {lists.map(list => 
-          <div key={list._id}>
-            {list.title}
-          </div>
+        {lists.map(list =>
+          <List key={list._id} list={list} /> 
         )}
 
       </div>

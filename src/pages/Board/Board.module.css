@@ -6,8 +6,8 @@
 
 .board {
   width: 100vw;
-  padding: 12px;
+  padding: 12px 22px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 22px;
 }
