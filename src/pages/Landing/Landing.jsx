@@ -1,9 +1,12 @@
+import { useState } from 'react'
+
 import BoardCard from '../../components/BoardCard/BoardCard'
 
 // css
 import styles from './Landing.module.css'
 
 const Landing = ({ user, boards }) => {
+  const [showAddForm, setShowAddForm] = useState(false)
 
   return (
 
@@ -19,6 +22,13 @@ const Landing = ({ user, boards }) => {
         <>
           <h4 className={styles.caption}>Create a new board from scratch or try out a template</h4>
           <section className={styles.templates}>
+            {showAddForm && 
+              <form action="">
+                
+              </form>
+            }
+            {!showAddForm && <button onClick={() => setShowAddForm(!showAddForm)}>Add</button>}
+            
             <div>
               <h3>template</h3>
             </div>

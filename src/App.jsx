@@ -18,7 +18,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
-import { getAllBoards } from './services/boardService'
+import * as boardService from './services/boardService'
 
 // styles
 import './App.css'
@@ -47,7 +47,7 @@ function App() {
     fetchProfile()
     .then(() => {
       const fetchBoards = async () => {
-        const boardsData = await getAllBoards()
+        const boardsData = await boardService.getAllBoards()
         setBoards(boardsData)
       }
       fetchBoards()
