@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import BoardCard from '../../components/BoardCard/BoardCard'
 
+import addBoard from '../../assets/addBoard.png'
 // css
 import styles from './Landing.module.css'
 
@@ -35,6 +36,7 @@ const Landing = ({ user, boards, handleAddBoard }) => {
           <section className={styles.templates}>
             {showAddForm && 
             <div>
+              <img className={styles.addImg} src={addBoard} alt="add board icon" />
               <form className={styles.addForm} onSubmit={handleSubmit}>
                 <input 
                 required
@@ -52,6 +54,7 @@ const Landing = ({ user, boards, handleAddBoard }) => {
             }
             {!showAddForm && 
               <div>
+                <img className={styles.addImg} src={addBoard} alt="add board icon" />
                 <h3 onClick={() => setShowAddForm(!showAddForm)}>Create a Board</h3>
               </div>
             }
