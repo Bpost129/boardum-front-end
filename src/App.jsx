@@ -18,8 +18,6 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 
-import { getAllBoards } from './services/boardService'
-
 // styles
 import './App.css'
 
@@ -37,8 +35,6 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
-
-
     
   useEffect(() => {
     const fetchProfile = async () => {
