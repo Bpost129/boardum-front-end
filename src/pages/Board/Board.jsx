@@ -9,21 +9,24 @@ import { getAllLists } from '../../services/listService'
 import styles from './Board.module.css'
 
 const Board = ({ handleUpdateBoard }) => {
-  const { state } = useLocation()
+  // const { state } = useLocation()
 
   const [board, setBoard] = useState({})
   const [lists, setLists] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
-  const [updateFormData, setUpdateFormData] = useState(state)
+  const [updateFormData, setUpdateFormData] = useState({
+    title: board.title
+  })
   const { boardId } = useParams()
 
   const handleSubmit = e => {
     e.preventDefault()
+    setShowEditForm(!showEditForm)
     handleUpdateBoard(updateFormData)
   }
 
   const handleChange = e => {
-    setUpdateFormData({ ...updateFormData, [e.target.name]: e.target.value })
+    setUpdateFormData({ ...updateFormData, _id: board._id, [e.target.name]: e.target.value })
   }
   
   useEffect(() => {
@@ -40,6 +43,10 @@ const Board = ({ handleUpdateBoard }) => {
       fetchLists()
     })
   }, [boardId])
+
+  if (!board) {
+    return <main className={styles.container}> <></> </main>
+  }
 
   return (
     <main className={styles.container}>
