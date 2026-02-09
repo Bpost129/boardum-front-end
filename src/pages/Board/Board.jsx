@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 import List from '../../components/List/List'
 
@@ -8,19 +8,18 @@ import { getAllLists } from '../../services/listService'
 
 import styles from './Board.module.css'
 
-const Board = () => {
+const Board = ({ handleUpdateBoard }) => {
+  const { state } = useLocation()
 
   const [board, setBoard] = useState({})
   const [lists, setLists] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
-  const [updateFormData, setUpdateFormData] = useState({
-    title: board.title
-  })
+  const [updateFormData, setUpdateFormData] = useState(state)
   const { boardId } = useParams()
 
   const handleSubmit = e => {
     e.preventDefault()
-    // handleUpdateBoard(formData)
+    handleUpdateBoard(updateFormData)
   }
 
   const handleChange = e => {

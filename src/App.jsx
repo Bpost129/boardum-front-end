@@ -45,6 +45,12 @@ function App() {
     navigate(`/boards/${newBoard._id}`)
   }
 
+  const handleUpdateBoard = async (boardFormData) => {
+    const updatedBoard = await boardService.updateBoard(boardFormData)
+    setBoards(b => updatedBoard._id === b._id ? updatedBoard : b)
+    navigate(`/boards/${updatedBoard._id}`)
+  }
+
   const handleDeleteBoard = async (boardId) => {
     const deletedBoard = await boardService.deleteBoard(boardId)
     setBoards(boards.filter(b => b._id !== deletedBoard._id))
@@ -102,7 +108,7 @@ function App() {
           path="/boards/:boardId"
           element={
             <ProtectedRoute user={user}>
-              <Board user={user} profile={profile} />
+              <Board user={user} profile={profile} handleUpdateBoard={handleUpdateBoard} />
             </ProtectedRoute>
           }
         />

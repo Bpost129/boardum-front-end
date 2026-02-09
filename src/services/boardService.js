@@ -40,7 +40,23 @@ export async function createBoard(boardFormData) {
       },
       body: JSON.stringify(boardFormData)
     })
-    return res.json()
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+export async function updateBoard(boardFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardFormData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(boardFormData)
+    })
+    return await res.json()
   } catch (err) {
     throw new Error(err)
   }
