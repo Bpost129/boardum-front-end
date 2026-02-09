@@ -10,18 +10,38 @@ import styles from './Board.module.css'
 
 const Board = ({ handleUpdateBoard }) => {
   // const { state } = useLocation()
+  const { boardId } = useParams()
 
-  const [board, setBoard] = useState({})
+  const [board, setBoard] = useState(null)
   const [lists, setLists] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
   const [updateFormData, setUpdateFormData] = useState({
-    title: board.title
+    _id: boardId,
+    title: board?.title
   })
-  const { boardId } = useParams()
+
+
+  // ***************************
+
+
+
+
+  // **** STATE DOESNT UPDATE ****
+  // **** MUST RERENDER DETAILS PAGE ****
+  // **** MUST REFRESH LANDING PAGE ****
+  
+  // **** WTF ****
+
+
+
+  // ***************************
+
+
 
   const handleSubmit = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
+    
     handleUpdateBoard(updateFormData)
   }
 
