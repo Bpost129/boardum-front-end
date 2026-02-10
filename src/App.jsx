@@ -47,7 +47,7 @@ function App() {
 
   const handleUpdateBoard = async (boardFormData) => {
     const updatedBoard = await boardService.updateBoard(boardFormData)
-    setBoards(b => updatedBoard._id === b._id ? updatedBoard : b)
+    setBoards(boards.map(b => updatedBoard._id === b._id ? updatedBoard : b))
     navigate(`/boards/${updatedBoard._id}`)
   }
 

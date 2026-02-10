@@ -9,16 +9,13 @@ import { getAllLists } from '../../services/listService'
 import styles from './Board.module.css'
 
 const Board = ({ handleUpdateBoard }) => {
-  // const { state } = useLocation()
+  const { state } = useLocation()
   const { boardId } = useParams()
 
   const [board, setBoard] = useState(null)
   const [lists, setLists] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
-  const [updateFormData, setUpdateFormData] = useState({
-    _id: boardId,
-    title: board?.title
-  })
+  const [updateFormData, setUpdateFormData] = useState(state)
 
 
   // ***************************
@@ -62,7 +59,7 @@ const Board = ({ handleUpdateBoard }) => {
       }
       fetchLists()
     })
-  }, [boardId])
+  }, [state])
 
   if (!board) {
     return <main className={styles.container}> <></> </main>
