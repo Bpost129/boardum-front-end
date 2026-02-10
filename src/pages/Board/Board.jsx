@@ -12,20 +12,23 @@ const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
 
+  // board
   const [board, setBoard] = useState(null)
-  const [lists, setLists] = useState([])
   const [showEditForm, setShowEditForm] = useState(false)
   const [updateFormData, setUpdateFormData] = useState(state)
+  
+  // list
+  const [lists, setLists] = useState([])
 
+  
 
-  const handleSubmit = e => {
+  const handleSubmitBoardForm = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
-    
     handleUpdateBoard(updateFormData)
   }
 
-  const handleChange = e => {
+  const handleChangeBoardForm = e => {
     setUpdateFormData({ ...updateFormData, _id: board._id, [e.target.name]: e.target.value })
   }
   
@@ -51,7 +54,7 @@ const Board = ({ handleUpdateBoard }) => {
   return (
     <main className={styles.container}>
       {showEditForm && 
-      <form className={styles.editForm} onSubmit={handleSubmit}>
+      <form className={styles.editForm} onSubmit={handleSubmitBoardForm}>
         <input 
         required
         type="text" 
@@ -59,7 +62,7 @@ const Board = ({ handleUpdateBoard }) => {
         id="title-input"
         placeholder={board.title}
         value={updateFormData.title}
-        onChange={handleChange}
+        onChange={handleChangeBoardForm}
         />
         <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
         <button type="submit">✅</button>
@@ -72,7 +75,9 @@ const Board = ({ handleUpdateBoard }) => {
         {lists.map(list =>
           <List key={list._id} list={list} /> 
         )}
-
+        <div className={styles.addList}>
+          <span> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+        </div>
       </div>
     </main>
   )
