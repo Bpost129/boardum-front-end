@@ -4,7 +4,7 @@ import { useParams, useLocation } from 'react-router-dom'
 import List from '../../components/List/List'
 
 import { getBoard } from '../../services/boardService'
-import { getAllLists } from '../../services/listService'
+import * as listService from '../../services/listService'
 
 import styles from './Board.module.css'
 
@@ -23,8 +23,31 @@ const Board = ({ handleUpdateBoard }) => {
   const [addListFormData, setAddListFormData] = useState({
     title: ''
   })
+  
+  
+  const handleAddList = async (listFormData) => {
+    const newList = await listService.createList(listFormData, boardId)
+    setLists([newList, ...lists])
+    // navigate(`/boards/${boardId}`)
+  }
+
+  // const handleUpdateBoard = async (boardFormData) => {
+  //   const updatedBoard = await boardService.updateBoard(boardFormData)
+  //   setBoards(boards.map(b => updatedBoard._id === b._id ? updatedBoard : b))
+  //   navigate(`/boards/${updatedBoard._id}`)
+  // }
+
+  // const handleDeleteBoard = async (boardId) => {
+  //   const deletedBoard = await boardService.deleteBoard(boardId)
+  //   setBoards(boards.filter(b => b._id !== deletedBoard._id))
+  //   navigate('/')
+  // }
+
+
+
 
   
+
   // board
   const handleSubmitBoardForm = e => {
     e.preventDefault()
@@ -39,12 +62,21 @@ const Board = ({ handleUpdateBoard }) => {
   // list
   const handleSubmitListForm = e => {
     e.preventDefault()
-    // handleAddList()
+    setShowAddListForm(!showAddListForm)
+    handleAddList(addListFormData)
   }
 
   const handleChangeListForm = e => {
     setAddListFormData({ ...addListFormData, [e.target.name]: e.target.value })
   }
+
+
+
+
+
+
+
+
   
   useEffect(() => {
     const fetchBoard = async () => {
@@ -54,7 +86,7 @@ const Board = ({ handleUpdateBoard }) => {
     fetchBoard()
     .then(() => {
       const fetchLists = async () => {
-        const listsData = await getAllLists(boardId)
+        const listsData = await listService.getAllLists(boardId)
         setLists(listsData)
       }
       fetchLists()

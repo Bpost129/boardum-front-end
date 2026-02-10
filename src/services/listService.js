@@ -16,3 +16,19 @@ export async function getAllLists(boardId) {
       throw new Error(err)
     }
 }
+
+export async function createList(listFormData, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(listFormData)
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
