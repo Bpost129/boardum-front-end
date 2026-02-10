@@ -13,3 +13,75 @@
   background-color: black;
 
 }
+
+.listHeader {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+}
+
+.listHeader h3 {
+  margin: auto;
+}
+
+.listOptions {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+
+.optionsDelete {
+  margin-top: 6px;
+  margin-right: 6px;
+  text-align: end;
+  width: 15px;
+  height: 18px;
+  direction: rtl;
+  text-overflow: clip;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.optionsDelete:hover {
+  margin-top: 6px;
+  margin-right: 1.5px;
+  width: 84px;  
+}
+
+.optionsEdit {
+  margin-top: 6px;
+  margin-right: 6px;
+  text-align: end;
+  width: 15px;
+  height: 18px;
+  direction: rtl;
+  text-overflow: clip;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.optionsEdit:hover {
+  margin-top: 6px;
+  margin-right: 1.5px;
+  width: 58.75px;  
+}
+
+.editForm {
+  display: flex;
+  margin-top: 12px;
+}
+
+.editForm input {
+  width: 180px;
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.editForm input:focus {
+  outline: none;
+}

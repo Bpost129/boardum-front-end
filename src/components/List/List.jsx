@@ -63,8 +63,8 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
         <>
           <h3>{list.title}  </h3>
           <div className={styles.listOptions}>
-            <span onClick={() => handleDeleteList(list._id, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-            <span> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i>   </span>
+            <span className={styles.optionsDelete} onClick={() => handleDeleteList(list._id, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
+            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i> EDIT</span>
           </div>
         </>
         }
