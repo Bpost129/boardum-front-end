@@ -3,20 +3,50 @@ import { useParams } from 'react-router-dom'
 
 import Card from '../Card/Card'
 
-import { getAllCards } from '../../services/cardService'
+import * as cardService from '../../services/cardService'
 
 import styles from './List.module.css'
 
 const List = ({ list, handleDeleteList, handleUpdateList }) => {
   const listId = list._id
   const { boardId } = useParams()
-  const [cards, setCards] = useState([])
-
-
+  
+  // list
   const [showEditForm, setShowEditForm] = useState(false)
   const [editFormData, setEditFormData] = useState(list)
+  
+  // cards
+  const [cards, setCards] = useState([])
+  const [showAddCardForm, setShowAddCardForm] = useState(false)
+  const [addCardFormData, setAddCardFormData] = useState({
+    title: ''
+  })
 
 
+  const handleAddCard = async (addCardFormData) => {
+      const newCard = await cardService.createCard(addCardFormData, listId, boardId)
+      setCards([newCard, ...cards])
+      // navigate(`/boards/${boardId}`)
+    }
+  
+  //   const handleUpdateList = async (listFormData, boardId) => {
+  //     const updatedList = await listService.updateList(listFormData, boardId)
+  //     setLists(lists.map(l => updatedList._id === l._id ? updatedList : l))
+  //     // navigate(`/boards/${updatedBoard._id}`)
+  //   }
+  
+  //   const handleDeleteList = async (listId, boardId) => {
+  //     const deletedList = await listService.deleteList(listId, boardId)
+  //     setLists(lists.filter(b => b._id !== deletedList._id))
+  //     // navigate('/boards/${boardId}')
+  //   }
+
+
+
+
+
+
+  // list
   const handleSubmitListForm = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
@@ -28,9 +58,25 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
   }
 
 
+  // cards
+  const handleSubmitCardForm = e => {
+    e.preventDefault()
+    setShowAddCardForm(!showAddCardForm)
+    handleAddCard(addCardFormData)
+  }
+
+  const handleChangeCardForm = e => {
+    setAddCardFormData({ ...addCardFormData, [e.target.name]: e.target.value })
+  }
+
+
+
+
+
+
   useEffect(() => {
     const fetchCards = async () => {
-      const cardsData = await getAllCards(boardId, listId)
+      const cardsData = await cardService.getAllCards(boardId, listId)
       setCards(cardsData)
     }
     fetchCards()
@@ -73,10 +119,36 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
       
       </div>
 
-      <section>
+      <section className={styles.cards}>
         {cards.map(card =>
           <Card key={card._id} card={card} />
         )}
+        {/* <div className={styles.addCard}>
+          <h4><i className="fa-solid fa-plus fa-xs"></i> Add Card</h4>
+        </div> */}
+
+        {/*  */}
+
+        <div className={styles.addCard}>
+          {showAddCardForm && 
+          <form className={styles.addCardForm} onSubmit={handleSubmitCardForm}>
+            <input 
+            required
+            type="text" 
+            name="title"
+            id="title-input"
+            placeholder="Add a title"
+            value={addCardFormData.title}
+            onChange={handleChangeCardForm}
+            />
+            <button onClick={() => setShowAddCardForm(!showAddCardForm)}>❌</button>
+            <button type="submit">✅</button>
+          </form>
+          }
+          {!showAddCardForm && 
+          <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>
+          }
+        </div>
 
       </section>
     </div>

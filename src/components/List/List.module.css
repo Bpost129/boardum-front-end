@@ -85,3 +85,59 @@
 .editForm input:focus {
   outline: none;
 }
+
+
+
+/* cards */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.addCard {
+  width: 260px;
+  height: 75px;
+  padding: 6px;
+  text-align: start;
+  border-radius: 12px;
+  
+  
+  background-color: rgb(98, 112, 107);
+}
+
+
+.addCard span {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+
+.addCard h4 {
+  margin: 2px;
+}
+
+
+.addCardForm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.addCardForm input {
+  width: 150px;
+  background-color: rgb(98, 112, 107);
+  border: none;
+  color: white;
+}
+
+.addCardForm input:focus {
+  outline: none;
+
+}

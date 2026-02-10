@@ -16,3 +16,19 @@ export async function getAllCards(boardId, listId) {
       throw new Error(err)
     }
 }
+
+export async function createCard(cardFormData, listId, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists/${listId}/cards`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cardFormData)
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}

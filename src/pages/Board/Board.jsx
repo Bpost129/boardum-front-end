@@ -116,6 +116,8 @@ const Board = ({ handleUpdateBoard }) => {
       {!showEditForm && 
       <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
       }
+
+      
       <div className={styles.board}>
         {lists.map(list =>
           <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
