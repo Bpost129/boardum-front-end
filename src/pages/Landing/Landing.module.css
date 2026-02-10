@@ -14,7 +14,7 @@
 
 .addForm {
   margin: 0 auto;
-  padding: 18px 0 14px 16px;
+  padding: 20px 0 16px 16px;
   width: 372px;
   display: flex;
   text-align: start;
@@ -32,7 +32,11 @@
   background-color: rgb(92, 92, 92);
   color: white;
   border-radius: 6px;
-  border-style: solid;
+  border: none;
+}
+
+.addForm input:focus {
+  outline: none;
 }
 
 .templates {

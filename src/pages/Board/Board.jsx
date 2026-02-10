@@ -19,9 +19,13 @@ const Board = ({ handleUpdateBoard }) => {
   
   // list
   const [lists, setLists] = useState([])
+  const [showAddListForm, setShowAddListForm] = useState(false)
+  const [addListFormData, setAddListFormData] = useState({
+    title: ''
+  })
 
   
-
+  // board
   const handleSubmitBoardForm = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
@@ -30,6 +34,16 @@ const Board = ({ handleUpdateBoard }) => {
 
   const handleChangeBoardForm = e => {
     setUpdateFormData({ ...updateFormData, _id: board._id, [e.target.name]: e.target.value })
+  }
+
+  // list
+  const handleSubmitListForm = e => {
+    e.preventDefault()
+    // handleAddList()
+  }
+
+  const handleChangeListForm = e => {
+    setAddListFormData({ ...addListFormData, [e.target.name]: e.target.value })
   }
   
   useEffect(() => {
@@ -76,7 +90,24 @@ const Board = ({ handleUpdateBoard }) => {
           <List key={list._id} list={list} /> 
         )}
         <div className={styles.addList}>
-          <span> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+          {showAddListForm && 
+          <form className={styles.addListForm} onSubmit={handleSubmitListForm}>
+            <input 
+            required
+            type="text" 
+            name="title"
+            id="title-input"
+            placeholder="Add a title"
+            value={addListFormData.title}
+            onChange={handleChangeListForm}
+            />
+            <button onClick={() => setShowAddListForm(!showAddListForm)}>❌</button>
+            <button type="submit">✅</button>
+          </form>
+          }
+          {!showAddListForm && 
+          <span onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+          }
         </div>
       </div>
     </main>

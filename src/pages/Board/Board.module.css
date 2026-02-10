@@ -13,8 +13,20 @@
 }
 
 .editForm {
+  display: flex;
   margin-top: 26px;
   margin-bottom: 29px;
+}
+
+.editForm input {
+  background-color: rgb(46, 46, 46);
+  border: none;
+  color: white;
+  width: 200px;
+}
+
+.editForm input:focus {
+  outline: none;
 }
 
 .addList {
@@ -37,4 +49,21 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+}
+
+.addListForm {
+  display: flex;
+}
+
+
+.addListForm input {
+  width: 180px;
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.addListForm input:focus {
+  outline: none;
+
 }
