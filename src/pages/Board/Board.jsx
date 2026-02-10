@@ -39,7 +39,7 @@ const Board = ({ handleUpdateBoard }) => {
 
   const handleDeleteList = async (listId, boardId) => {
     const deletedList = await listService.deleteList(listId, boardId)
-    setLists(lists.filter(b => b._id !== deletedList._id))
+    setLists(lists.filter(l => l._id !== deletedList._id))
     // navigate('/boards/${boardId}')
   }
 

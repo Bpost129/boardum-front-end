@@ -35,9 +35,9 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
   //     // navigate(`/boards/${updatedBoard._id}`)
   //   }
   
-  //   const handleDeleteList = async (listId, boardId) => {
-  //     const deletedList = await listService.deleteList(listId, boardId)
-  //     setLists(lists.filter(b => b._id !== deletedList._id))
+  //   const handleDeleteCard = async (cardId, listId, boardId) => {
+  //     const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
+  //     setCards(cards.filter(c => c._id !== deletedCard._id))
   //     // navigate('/boards/${boardId}')
   //   }
 
