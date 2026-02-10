@@ -7,7 +7,7 @@ import { getAllCards } from '../../services/cardService'
 
 import styles from './List.module.css'
 
-const List = ({ list }) => {
+const List = ({ list, handleDeleteList }) => {
   const listId = list._id
   const { boardId } = useParams()
   const [cards, setCards] = useState([])
@@ -22,7 +22,8 @@ const List = ({ list }) => {
 
   return (
     <div className={styles.list}>
-      <h3>{list.title}</h3>
+      <span onClick={() => handleDeleteList(list._id, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
+      <h3>{list.title}  </h3>
       {cards.map(card =>
         <Card key={card._id} card={card} />
       )}

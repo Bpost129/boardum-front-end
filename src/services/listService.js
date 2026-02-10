@@ -32,3 +32,18 @@ export async function createList(listFormData, boardId) {
     throw new Error(err)
   }
 }
+
+
+export async function deleteList(listId, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists/${listId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
