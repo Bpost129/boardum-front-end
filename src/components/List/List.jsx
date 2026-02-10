@@ -25,7 +25,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
   const handleAddCard = async (addCardFormData) => {
       const newCard = await cardService.createCard(addCardFormData, listId, boardId)
-      setCards([newCard, ...cards])
+      setCards([...cards, newCard])
       // navigate(`/boards/${boardId}`)
     }
   

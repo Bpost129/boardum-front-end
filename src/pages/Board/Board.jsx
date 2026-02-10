@@ -27,7 +27,7 @@ const Board = ({ handleUpdateBoard }) => {
   
   const handleAddList = async (listFormData) => {
     const newList = await listService.createList(listFormData, boardId)
-    setLists([newList, ...lists])
+    setLists([...lists, newList])
     // navigate(`/boards/${boardId}`)
   }
 
