@@ -31,11 +31,11 @@ const Board = ({ handleUpdateBoard }) => {
     // navigate(`/boards/${boardId}`)
   }
 
-  // const handleUpdateBoard = async (boardFormData) => {
-  //   const updatedBoard = await boardService.updateBoard(boardFormData)
-  //   setBoards(boards.map(b => updatedBoard._id === b._id ? updatedBoard : b))
-  //   navigate(`/boards/${updatedBoard._id}`)
-  // }
+  const handleUpdateList = async (listFormData, boardId) => {
+    const updatedList = await listService.updateList(listFormData, boardId)
+    setLists(lists.map(l => updatedList._id === l._id ? updatedList : l))
+    // navigate(`/boards/${updatedBoard._id}`)
+  }
 
   const handleDeleteList = async (listId, boardId) => {
     const deletedList = await listService.deleteList(listId, boardId)
@@ -118,7 +118,7 @@ const Board = ({ handleUpdateBoard }) => {
       }
       <div className={styles.board}>
         {lists.map(list =>
-          <List key={list._id} list={list} handleDeleteList={handleDeleteList} /> 
+          <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
         )}
         <div className={styles.addList}>
           {showAddListForm && 
