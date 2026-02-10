@@ -35,11 +35,11 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
   //     // navigate(`/boards/${updatedBoard._id}`)
   //   }
   
-  //   const handleDeleteCard = async (cardId, listId, boardId) => {
-  //     const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
-  //     setCards(cards.filter(c => c._id !== deletedCard._id))
-  //     // navigate('/boards/${boardId}')
-  //   }
+    const handleDeleteCard = async (cardId, listId, boardId) => {
+      const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
+      setCards(cards.filter(c => c._id !== deletedCard._id))
+      // navigate('/boards/${boardId}')
+    }
 
 
 
@@ -121,7 +121,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
       <section className={styles.cards}>
         {cards.map(card =>
-          <Card key={card._id} card={card} />
+          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} />
         )}
         {/* <div className={styles.addCard}>
           <h4><i className="fa-solid fa-plus fa-xs"></i> Add Card</h4>

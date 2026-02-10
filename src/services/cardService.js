@@ -32,3 +32,17 @@ export async function createCard(cardFormData, listId, boardId) {
     throw new Error(err)
   }
 }
+
+export async function deleteCard(cardId, listId, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists/${listId}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
