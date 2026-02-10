@@ -18,23 +18,6 @@ const Board = ({ handleUpdateBoard }) => {
   const [updateFormData, setUpdateFormData] = useState(state)
 
 
-  // ***************************
-
-
-
-
-  // **** STATE DOESNT UPDATE ****
-  // **** MUST RERENDER DETAILS PAGE ****
-  // **** MUST REFRESH LANDING PAGE ****
-  
-  // **** WTF ****
-
-
-
-  // ***************************
-
-
-
   const handleSubmit = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
