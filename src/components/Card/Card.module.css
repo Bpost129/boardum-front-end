@@ -51,3 +51,25 @@
 
   width: 79.75px;  
 }
+
+
+/* ****************** imports from list **************** */
+
+.editForm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.editForm input {
+  width: 150px;
+  background-color: rgb(98, 112, 107);
+  border: none;
+  color: white;
+}
+
+.editForm input:focus {
+  outline: none;
+
+}

@@ -29,11 +29,11 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
       // navigate(`/boards/${boardId}`)
     }
   
-  //   const handleUpdateList = async (listFormData, boardId) => {
-  //     const updatedList = await listService.updateList(listFormData, boardId)
-  //     setLists(lists.map(l => updatedList._id === l._id ? updatedList : l))
-  //     // navigate(`/boards/${updatedBoard._id}`)
-  //   }
+    const handleUpdateCard = async (cardFormData, listId, boardId) => {
+      const updatedCard = await cardService.updateCard(cardFormData, listId, boardId)
+      setCards(cards.map(c => updatedCard._id === c._id ? updatedCard : c))
+      // navigate(`/boards/${updatedBoard._id}`)
+    }
   
     const handleDeleteCard = async (cardId, listId, boardId) => {
       const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
@@ -121,7 +121,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
       <section className={styles.cards}>
         {cards.map(card =>
-          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} />
+          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} />
         )}
         {/* <div className={styles.addCard}>
           <h4><i className="fa-solid fa-plus fa-xs"></i> Add Card</h4>
