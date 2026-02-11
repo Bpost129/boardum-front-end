@@ -51,7 +51,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard }) => {
 
       {!showEditForm &&
       <>
-        <h3>{card.title}  </h3>
+        <h4>{card.title}  </h4>
         <div className={styles.listOptions}>
           <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
           <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i> EDIT</span>

@@ -53,7 +53,7 @@
 }
 
 .optionsEdit {
-  margin-top: 6px;
+  /* margin-top: 6px; */
   margin-right: 6px;
   text-align: end;
   width: 15px;
@@ -65,7 +65,7 @@
 }
 
 .optionsEdit:hover {
-  margin-top: 6px;
+
   margin-right: 1.5px;
   width: 58.75px;  
 }

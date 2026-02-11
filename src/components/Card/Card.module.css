@@ -13,21 +13,8 @@
 }
 
 .card h4 {
-  margin: 2px;
+  margin: 2px 2px;
 }
-
-/* .listHeader {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-}
-
-.listHeader h3 {
-  margin: auto;
-} */
-
 
 
 .listOptions {
@@ -52,8 +39,24 @@
   width: 79.75px;  
 }
 
+.optionsEdit {
+  /* margin-top: 6px; */
+  margin-left: 6px;
+  text-align: end;
+  width: 15px;
+  height: 18px;
+  direction: rtl;
+  text-overflow: clip;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 
-/* ****************** imports from list **************** */
+.optionsEdit:hover {
+
+  /* margin-right: 1.5px; */
+  width: 54px;  
+}
+/*  */
 
 .editForm {
   display: flex;
