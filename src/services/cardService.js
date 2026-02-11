@@ -33,6 +33,22 @@ export async function createCard(cardFormData, listId, boardId) {
   }
 }
 
+export async function updateCard(cardFormData, listId, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists/${listId}/cards/${cardFormData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cardFormData)
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export async function deleteCard(cardId, listId, boardId) {
   try {
     const res = await fetch(`${BASE_URL}/${boardId}/lists/${listId}/cards/${cardId}`, {
