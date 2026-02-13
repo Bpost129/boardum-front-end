@@ -1,6 +1,6 @@
 .list {
   height: 800px;
-  width: 280px;
+  width: 260px;
   
   display: flex;
   flex-direction: column;
@@ -99,14 +99,14 @@
 }
 
 .addCard {
-  width: 260px;
-  height: 75px;
+  width: 240px;
+  height: 38px;
   padding: 6px;
   text-align: start;
   border-radius: 12px;
   
   
-  background-color: rgb(98, 112, 107);
+  background-color: rgba(98, 112, 107, 0.6);
 }
 
 
@@ -132,7 +132,7 @@
 
 .addCardForm input {
   width: 150px;
-  background-color: rgb(98, 112, 107);
+  background-color: rgba(98, 112, 107, 0);
   border: none;
   color: white;
 }

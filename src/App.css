@@ -4,6 +4,11 @@
   box-sizing: inherit;
 }
 
+*::placeholder {
+  color: rgba(245, 245, 245, 0.6);
+  font-weight: 600;
+}
+
 body {
   box-sizing: border-box;
 

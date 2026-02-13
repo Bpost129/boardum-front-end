@@ -1,6 +1,6 @@
 .card {
-  width: 260px;
-  height: 125px;
+  width: 240px;
+  height: 112px;
   padding: 6px;
   text-align: start;
   border-radius: 12px;
@@ -12,8 +12,18 @@
   background-color: rgb(98, 112, 107);
 }
 
-.card h4 {
+.card h5 {
   margin: 2px 2px;
+}
+
+.card > .listOptions {
+  visibility: hidden;
+
+}
+
+.card:hover > .listOptions {
+  visibility: visible;
+
 }
 
 
@@ -22,6 +32,9 @@
   flex-direction: column;
   position: relative;
 }
+
+/* .listOptions:hover {
+} */
 
 .optionsDelete {
   margin-left: 6px;
