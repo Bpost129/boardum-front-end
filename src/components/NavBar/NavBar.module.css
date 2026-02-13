@@ -26,3 +26,9 @@
   padding: 0 12px;
   border-radius: 12px;
 }
+
+@media screen and (max-width: 430px) {
+  .list {
+    padding: 6px;
+  }
+}

@@ -6,10 +6,12 @@
 
 .container h1 {
   font-size: 52px;
+  text-align: center;
 }
 
 .caption { 
   font-weight: 500;
+  text-align: center;
 }
 
 .addForm {
@@ -85,9 +87,11 @@
 }
 
 .userBoards {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -135,4 +139,39 @@
   
   border-radius: 0 0 12px 12px;
   border-top: 1px solid rgb(193, 193, 193, .5);
+}
+
+
+
+@media screen and (max-width: 430px) {
+  .container h1 {
+    font-size: 38px;
+    text-align: center;
+  }
+
+  .caption { 
+    font-weight: 500;
+    text-align: center;
+    width: 80%;
+  }
+
+  .templates {
+    margin-bottom: 25px;
+  }
+
+  .templates div {
+    height: 160px;
+    width: 250px;
+  }
+
+  .templates h3 {
+    margin: 0 auto;
+    padding: 18px 0 12px 16px;
+    width: 248px;
+  }
+
+  .addImg {
+    height: 100px;
+    margin: auto;
+  }
 }

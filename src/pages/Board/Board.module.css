@@ -5,10 +5,12 @@
 }
 
 .board {
-  width: 100vw;
+  width: 100%;
   padding: 12px 22px;
   display: flex;
   align-items: flex-start;
+  flex-wrap: nowrap;
+  overflow: scroll;
   gap: 22px;
 }
 
@@ -31,7 +33,7 @@
 
 .addList {
   height: 50px;
-  width: 280px;
+  width: 260px;
   
   display: flex;
   flex-direction: column;
@@ -48,11 +50,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 260px;
   gap: 12px;
 }
 
 .addListForm {
   display: flex;
+  padding-right: 12px;
 }
 
 

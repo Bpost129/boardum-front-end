@@ -4,6 +4,7 @@
   padding: 6px;
   text-align: start;
   border-radius: 12px;
+  margin: 0 12px;
 
   display: flex;
   align-items: flex-start;

@@ -139,7 +139,7 @@ const Board = ({ handleUpdateBoard }) => {
           </form>
           }
           {!showAddListForm && 
-          <span onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+          <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
           }
         </div>
       </div>
