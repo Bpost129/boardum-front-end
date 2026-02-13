@@ -1,6 +1,9 @@
 .list {
-  height: 800px;
+  height: fit-content;
+  /* height: 800px; */
   width: 260px;
+
+  padding-bottom: 12px;
   
   display: flex;
   flex-direction: column;
