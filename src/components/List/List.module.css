@@ -1,7 +1,7 @@
 .list {
   min-width: 260px;
   height: fit-content;
-  max-height: 800px;
+  max-height: 78vh;
   overflow-y: scroll;
   scrollbar-width: none;
 

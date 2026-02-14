@@ -48,5 +48,17 @@ nav > ul {
   padding: 16px 32px;
 }
 
+@media screen and (max-width: 480px) {
+  body {
+    padding-top: 0;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+  
+  nav {
+    bottom: 0;
+    top: auto;
+  }
 
+}
 
