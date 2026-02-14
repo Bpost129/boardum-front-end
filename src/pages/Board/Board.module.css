@@ -11,14 +11,17 @@
   display: flex;
   align-items: flex-start;
   flex-wrap: nowrap;
-  overflow: scroll;
-  /* scrollbar-width:thin; */
+  overflow-x: scroll;
+  scrollbar-width:thin;
+  scrollbar-color: grey #2f2f2f;
+  scroll-snap-type: proximity;
   /* overflow-y: scroll; */
   gap: 12px;
 }
 
 .board::-webkit-scrollbar {
   display: none;
+  /* background-color: black grey; */
   /* overflow-y: none; */
 }
 
