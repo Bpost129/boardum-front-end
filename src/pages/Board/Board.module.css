@@ -6,12 +6,20 @@
 
 .board {
   width: 100%;
+  /* height: 80vh; */
   padding: 12px 22px;
   display: flex;
   align-items: flex-start;
   flex-wrap: nowrap;
   overflow: scroll;
-  gap: 22px;
+  /* scrollbar-width:thin; */
+  /* overflow-y: scroll; */
+  gap: 12px;
+}
+
+.board::-webkit-scrollbar {
+  display: none;
+  /* overflow-y: none; */
 }
 
 .editForm {

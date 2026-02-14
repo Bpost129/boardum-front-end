@@ -1,11 +1,13 @@
 .list {
-  height: fit-content;
-  /* height: 800px; */
   width: 260px;
+  height: fit-content;
+  max-height: 800px;
+  overflow-y: scroll;
+  overflow-: 12px;
+  scrollbar-width: none;
 
   padding-bottom: 12px;
-  
-  
+    
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,7 +101,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
   gap: 12px;
+
+  
 }
 
 .addCard {
