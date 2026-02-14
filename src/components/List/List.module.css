@@ -3,7 +3,6 @@
   height: fit-content;
   max-height: 800px;
   overflow-y: scroll;
-  overflow-: 12px;
   scrollbar-width: none;
 
   padding-bottom: 12px;
@@ -102,7 +101,7 @@
   align-items: center;
   justify-content: center;
   
-  gap: 12px;
+  gap: 8px;
 
   
 }
