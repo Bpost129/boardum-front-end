@@ -177,6 +177,16 @@
     margin: auto;
   }
 
+  .addForm {
+    margin: 0 auto;
+    padding: 16px 0 12px 12px;
+    width: 248px;
+  }
+
+  .addForm input {
+    width: 140px;
+  }
+
   .userBoards {
     padding-bottom: 60px;
   }
