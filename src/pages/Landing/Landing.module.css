@@ -176,4 +176,8 @@
     height: 100px;
     margin: auto;
   }
+
+  .userBoards {
+    padding-bottom: 60px;
+  }
 }

@@ -50,9 +50,10 @@ nav > ul {
 
 @media screen and (max-width: 480px) {
   body {
+    /* padding-bottom: 36px; */
     padding-top: 0;
     height: 100vh;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
   }
   
   nav {

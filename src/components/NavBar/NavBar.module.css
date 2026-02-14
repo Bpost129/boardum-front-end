@@ -27,8 +27,32 @@
   border-radius: 12px;
 }
 
-@media screen and (max-width: 430px) {
+.logoutList, .homeList, .profileList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media screen and (min-width: 480px) {
+  .logoutLogo, .homeLogo, .profileLogo {
+    display: none;
+  }
+  
+}
+
+
+
+@media screen and (max-width: 480px) {
   .list {
     padding: 6px;
+  }
+
+  
+
+  .logoutText, .homeText, .profileText {
+    /* display: none; */
+    font-size: 12px;
   }
 }
