@@ -60,7 +60,8 @@
 .addList span {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 24px;
   width: 260px;
   gap: 12px;
 }

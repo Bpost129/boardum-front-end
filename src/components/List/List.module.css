@@ -28,13 +28,14 @@
 }
 
 .listHeader h3 {
-  margin: auto;
+  margin: 12px 12px 0 24px;
 }
 
 .listOptions {
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: flex-end;
 }
 
 
