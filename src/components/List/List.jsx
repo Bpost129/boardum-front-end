@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { DragDropProvider, useDraggable } from '@dnd-kit/react'
+
 
 import Card from '../Card/Card'
 import Form from '../Form/Form'
@@ -22,6 +24,10 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
   const [addCardFormData, setAddCardFormData] = useState({
     title: ''
   })
+
+  const {ref} = useDraggable({
+    id: 'draggable',
+  });
 
 
   const handleAddCard = async (addCardFormData) => {
@@ -84,7 +90,24 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
   }, [listId])
 
   return (
-    <div className={styles.list}>
+    <DragDropProvider
+      onDragStart={({source}) => {
+        console.log('Started dragging', source.id);
+      }}
+      onDragMove={({operation}) => {
+        const {position} = operation;
+        console.log('Current position:', position);
+      }}
+      onDragOver={({source, target}) => {
+        console.log(`${source.id} is over ${target.id}`);
+      }}
+      onDragEnd={({source, target}) => {
+        if (target) {
+          console.log(`Dropped ${source.id} onto ${target.id}`);
+        }
+      }}
+    >
+    <div className={styles.list} ref={ref}>
       <div className={styles.listHeader}>
 
         {showEditForm && 
@@ -124,6 +147,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
       </section>
     </div>
+    </DragDropProvider>
   )
 }
 

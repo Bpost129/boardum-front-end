@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-import { DragDropProvider, useDraggable } from '@dnd-kit/react'
+
 
 import List from '../../components/List/List'
 import Form from '../../components/Form/Form'
@@ -13,6 +13,8 @@ import styles from './Board.module.css'
 const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
+
+  
 
   // board
   const [board, setBoard] = useState(null)
@@ -44,10 +46,6 @@ const Board = ({ handleUpdateBoard }) => {
     setLists(lists.filter(l => l._id !== deletedList._id))
     // navigate('/boards/${boardId}')
   }
-
-
-
-
   
 
   // board
@@ -76,7 +74,9 @@ const Board = ({ handleUpdateBoard }) => {
 
 
 
-
+  
+    
+    
 
   
   useEffect(() => {
@@ -109,13 +109,9 @@ const Board = ({ handleUpdateBoard }) => {
 
       
       <div className={styles.board}>
-
-        <DragDropProvider>
           {lists.map(list =>
             <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
           )}
-        </DragDropProvider>
-
         <div className={styles.addList}>
           {showAddListForm && 
             <Form cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
