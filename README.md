@@ -5,7 +5,7 @@
 
 **Boardum** is a simple planning application for people looking to pass the time and tidy up their lives. To-do lists, event and project planning, budgeting, if you can turn it into a list, you can do it here. No newsletter, no subscription, just a simple, free tool to organize your life. Create as many boards, lists, and objectives as your heart desires.
 
-# [Cure your boardum](www.google.com)
+# [Cure your boardum](https://boardum-bp.netlify.app/)
 
 ## Credits
 
