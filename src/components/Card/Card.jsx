@@ -1,6 +1,7 @@
 import { useState } from 'react'
-
 import { useParams } from 'react-router-dom'
+
+import Form from '../Form/Form'
 
 import styles from './Card.module.css'
 
@@ -28,25 +29,9 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard }) => {
       </div> */}
 
 
-
-
       {showEditForm && 
-      <form className={styles.editForm} onSubmit={handleSubmit}>
-        <input 
-        required
-        type="text" 
-        name="title"
-        id="title-input"
-        placeholder={card.title}
-        value={editFormData.title}
-        onChange={handleChange}
-        />
-        <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
-        <button type="submit">✅</button>
-      </form>
+        <Form cn={styles.editForm} onSub={handleSubmit} place={card.title} val={editFormData.title} onChan={handleChange} show={showEditForm} setShow={setShowEditForm} />
       }
-
-
 
 
       {!showEditForm &&

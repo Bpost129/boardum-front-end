@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Card from '../Card/Card'
+import Form from '../Form/Form'
 
 import * as cardService from '../../services/cardService'
 
@@ -87,23 +88,8 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
       <div className={styles.listHeader}>
 
         {showEditForm && 
-        <form className={styles.editForm} onSubmit={handleSubmitListForm}>
-          <input 
-          required
-          type="text" 
-          name="title"
-          id="title-input"
-          placeholder={list.title}
-          value={editFormData.title}
-          onChange={handleChangeListForm}
-          />
-          <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
-          <button type="submit">✅</button>
-        </form>
+          <Form cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
         }
-
-
-
 
         {!showEditForm &&
         <>
@@ -114,9 +100,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
           </div>
         </>
         }
-      
-      
-      
+
       </div>
 
       <section className={styles.cards}>
@@ -131,19 +115,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
         <div className={styles.addCard}>
           {showAddCardForm && 
-          <form className={styles.addCardForm} onSubmit={handleSubmitCardForm}>
-            <input 
-            required
-            type="text" 
-            name="title"
-            id="title-input"
-            placeholder="Add a title"
-            value={addCardFormData.title}
-            onChange={handleChangeCardForm}
-            />
-            <button onClick={() => setShowAddCardForm(!showAddCardForm)}>❌</button>
-            <button type="submit">✅</button>
-          </form>
+            <Form cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
           }
           {!showAddCardForm && 
           <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>

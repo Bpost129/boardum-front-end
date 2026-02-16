@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
+import { DragDropProvider, useDraggable } from '@dnd-kit/react'
 
 import List from '../../components/List/List'
+import Form from '../../components/Form/Form'
 
 import { getBoard } from '../../services/boardService'
 import * as listService from '../../services/listService'
@@ -99,19 +101,7 @@ const Board = ({ handleUpdateBoard }) => {
   return (
     <main className={styles.container}>
       {showEditForm && 
-      <form className={styles.editForm} onSubmit={handleSubmitBoardForm}>
-        <input 
-        required
-        type="text" 
-        name="title"
-        id="title-input"
-        placeholder={board.title}
-        value={updateFormData.title}
-        onChange={handleChangeBoardForm}
-        />
-        <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
-        <button type="submit">✅</button>
-      </form>
+        <Form cn={styles.editForm} onSub={handleSubmitBoardForm} place={board.title} val={updateFormData.title} onChan={handleChangeBoardForm} show={showEditForm} setShow={setShowEditForm} />
       }
       {!showEditForm && 
       <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
@@ -119,24 +109,16 @@ const Board = ({ handleUpdateBoard }) => {
 
       
       <div className={styles.board}>
-        {lists.map(list =>
-          <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
-        )}
+
+        <DragDropProvider>
+          {lists.map(list =>
+            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
+          )}
+        </DragDropProvider>
+
         <div className={styles.addList}>
           {showAddListForm && 
-          <form className={styles.addListForm} onSubmit={handleSubmitListForm}>
-            <input 
-            required
-            type="text" 
-            name="title"
-            id="title-input"
-            placeholder="Add a title"
-            value={addListFormData.title}
-            onChange={handleChangeListForm}
-            />
-            <button onClick={() => setShowAddListForm(!showAddListForm)}>❌</button>
-            <button type="submit">✅</button>
-          </form>
+            <Form cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
           }
           {!showAddListForm && 
           <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>

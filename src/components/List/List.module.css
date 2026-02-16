@@ -79,6 +79,7 @@
 .editForm {
   display: flex;
   margin-top: 12px;
+  margin-bottom: 3.5px;
 }
 
 .editForm input {
