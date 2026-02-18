@@ -14,7 +14,6 @@ const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
 
-  
 
   // board
   const [board, setBoard] = useState(null)
@@ -75,10 +74,6 @@ const Board = ({ handleUpdateBoard }) => {
 
 
   
-    
-    
-
-  
   useEffect(() => {
     const fetchBoard = async () => {
       const boardData = await getBoard(boardId)
@@ -109,8 +104,11 @@ const Board = ({ handleUpdateBoard }) => {
 
       
       <div className={styles.board}>
+
           {lists.map(list =>
-            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
+          <>
+              <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
+          </>
           )}
         <div className={styles.addList}>
           {showAddListForm && 
