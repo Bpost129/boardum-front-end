@@ -24,7 +24,7 @@ const Board = ({ handleUpdateBoard }) => {
   const [lists, setLists] = useState([])
   const [showAddListForm, setShowAddListForm] = useState(false)
   const [addListFormData, setAddListFormData] = useState({
-    title: ''
+    title: '',
   })
   
   
@@ -105,9 +105,7 @@ const Board = ({ handleUpdateBoard }) => {
       <div className={styles.board}>
 
           {lists.map((list, index) =>
-          <>
-              <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
-          </>
+            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
           )}
 
 

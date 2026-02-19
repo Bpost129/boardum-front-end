@@ -29,7 +29,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   const [cards, setCards] = useState([])
   const [showAddCardForm, setShowAddCardForm] = useState(false)
   const [addCardFormData, setAddCardFormData] = useState({
-    title: ''
+    title: '',
   })
 
   
