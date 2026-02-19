@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDraggable } from '@dnd-kit/react'
 import { useSortable } from '@dnd-kit/react/sortable'
 
 
