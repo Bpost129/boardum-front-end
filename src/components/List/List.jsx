@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDraggable } from '@dnd-kit/react'
-
+import { useSortable } from '@dnd-kit/react/sortable'
 
 
 import Card from '../Card/Card'
@@ -11,11 +11,12 @@ import * as cardService from '../../services/cardService'
 
 import styles from './List.module.css'
 
-const List = ({ list, handleDeleteList, handleUpdateList }) => {
+const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   // dnd-kit
-  const {ref} = useDraggable({
-    id: list._id
-  })
+  // const {ref} = useDraggable({
+  //   id: list._id
+  // })
+  const {ref} = useSortable({ id, index })
 
 
   const listId = list._id

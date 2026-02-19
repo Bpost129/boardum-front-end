@@ -6,7 +6,6 @@
 
 .board {
   width: 100%;
-  /* height: 80vh; */
   padding: 12px 22px;
   display: flex;
   align-items: flex-start;
@@ -15,8 +14,12 @@
   scrollbar-width:thin;
   scrollbar-color: grey #2f2f2f;
   scroll-snap-type: proximity;
-  /* overflow-y: scroll; */
   gap: 12px;
+
+
+  
+  /* overflow-y: scroll; */
+  /* height: 80vh; */
 }
 
 .board::-webkit-scrollbar {

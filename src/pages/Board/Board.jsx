@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom'
 import { DragDropProvider } from '@dnd-kit/react'
 
 
+
 import List from '../../components/List/List'
 import Form from '../../components/Form/Form'
 
@@ -122,9 +123,9 @@ const Board = ({ handleUpdateBoard }) => {
             }
           }}
         >
-          {lists.map(list =>
+          {lists.map((list, index) =>
           <>
-              <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} /> 
+              <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
           </>
           )}
 
