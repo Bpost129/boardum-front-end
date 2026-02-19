@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-
+import { useDraggable } from '@dnd-kit/react'
 
 
 
@@ -12,7 +12,10 @@ import * as cardService from '../../services/cardService'
 import styles from './List.module.css'
 
 const List = ({ list, handleDeleteList, handleUpdateList }) => {
-
+  // dnd-kit
+  const {ref} = useDraggable({
+    id: list._id
+  })
 
 
   const listId = list._id
@@ -93,7 +96,7 @@ const List = ({ list, handleDeleteList, handleUpdateList }) => {
 
   return (
     
-    <div className={styles.list}>
+    <div className={styles.list} ref={ref}>
       <div className={styles.listHeader}>
 
         {showEditForm && 
