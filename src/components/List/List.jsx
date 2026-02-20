@@ -4,7 +4,7 @@ import { useSortable } from '@dnd-kit/react/sortable'
 
 
 import Card from '../Card/Card'
-import Form from '../Form/Form'
+import TitleForm from '../Form/TitleForm'
 
 import * as cardService from '../../services/cardService'
 
@@ -100,7 +100,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
       <div className={styles.listHeader}>
 
         {showEditForm && 
-          <Form cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
+          <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
         }
 
         {!showEditForm &&
@@ -127,7 +127,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
 
         <div className={styles.addCard}>
           {showAddCardForm && 
-            <Form cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
+            <TitleForm cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
           }
           {!showAddCardForm && 
           <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>

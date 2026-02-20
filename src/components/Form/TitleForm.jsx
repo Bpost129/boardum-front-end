@@ -1,4 +1,4 @@
-const Form = ({ cn, onSub, place, val, onChan, show, setShow }) => {
+const TitleForm = ({ cn, onSub, place, val, onChan, show, setShow }) => {
   return (
     <>
       <form className={cn} onSubmit={onSub}>
@@ -18,4 +18,4 @@ const Form = ({ cn, onSub, place, val, onChan, show, setShow }) => {
   )
 }
 
-export default Form
+export default TitleForm

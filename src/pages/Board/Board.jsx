@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom'
 
 
 import List from '../../components/List/List'
-import Form from '../../components/Form/Form'
+import TitleForm from '../../components/Form/TitleForm'
 
 import { getBoard } from '../../services/boardService'
 import * as listService from '../../services/listService'
@@ -96,7 +96,7 @@ const Board = ({ handleUpdateBoard }) => {
   return (
     <main className={styles.container}>
       {showEditForm && 
-        <Form cn={styles.editForm} onSub={handleSubmitBoardForm} place={board.title} val={updateFormData.title} onChan={handleChangeBoardForm} show={showEditForm} setShow={setShowEditForm} />
+        <TitleForm cn={styles.editForm} onSub={handleSubmitBoardForm} place={board.title} val={updateFormData.title} onChan={handleChangeBoardForm} show={showEditForm} setShow={setShowEditForm} />
       }
       {!showEditForm && 
       <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
@@ -111,7 +111,7 @@ const Board = ({ handleUpdateBoard }) => {
 
         <div className={styles.addList}>
           {showAddListForm && 
-            <Form cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
+            <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
           }
           {!showAddListForm && 
           <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>

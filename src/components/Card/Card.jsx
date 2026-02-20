@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Form from '../Form/Form'
+import TitleForm from '../Form/TitleForm'
 
 import styles from './Card.module.css'
 
@@ -30,7 +30,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard }) => {
 
 
       {showEditForm && 
-        <Form cn={styles.editForm} onSub={handleSubmit} place={card.title} val={editFormData.title} onChan={handleChange} show={showEditForm} setShow={setShowEditForm} />
+        <TitleForm cn={styles.editForm} onSub={handleSubmit} place={card.title} val={editFormData.title} onChan={handleChange} show={showEditForm} setShow={setShowEditForm} />
       }
 
 
