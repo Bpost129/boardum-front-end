@@ -7,12 +7,10 @@ import addBoard from '../../assets/addBoard.png'
 import styles from './Landing.module.css'
 
 const Landing = ({ user, boards, handleAddBoard, handleDeleteBoard }) => {
-  
   const [showAddForm, setShowAddForm] = useState(false)
   const [formData, setFormData] = useState({
     title: ''
   })
-
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -58,6 +56,7 @@ const Landing = ({ user, boards, handleAddBoard, handleDeleteBoard }) => {
               </form>
             </div>
             }
+
             {!showAddForm && 
               <div onClick={() => setShowAddForm(!showAddForm)}>
                 <img className={styles.addImg} src={addBoard} alt="add board icon" />
@@ -65,6 +64,7 @@ const Landing = ({ user, boards, handleAddBoard, handleDeleteBoard }) => {
               </div>
             }
           </section>
+          
           <h2>Your Boards</h2>
           <section className={styles.userBoards}>
             {boards.map(board => 

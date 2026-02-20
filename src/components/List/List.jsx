@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useSortable } from '@dnd-kit/react/sortable'
+// import { useSortable } from '@dnd-kit/react/sortable'
 
 
 import Card from '../Card/Card'
@@ -12,10 +12,7 @@ import styles from './List.module.css'
 
 const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   // dnd-kit
-  // const {ref} = useDraggable({
-  //   id: list._id
-  // })
-  const {ref} = useSortable({ id, index })
+  // const {ref} = useSortable({ id, index })
 
 
   const listId = list._id
@@ -32,33 +29,23 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     title: '',
   })
 
-  
-
-
+  // card service functions
   const handleAddCard = async (addCardFormData) => {
-      const newCard = await cardService.createCard(addCardFormData, listId, boardId)
-      setCards([...cards, newCard])
-      // navigate(`/boards/${boardId}`)
-    }
-  
-    const handleUpdateCard = async (cardFormData, listId, boardId) => {
-      const updatedCard = await cardService.updateCard(cardFormData, listId, boardId)
-      setCards(cards.map(c => updatedCard._id === c._id ? updatedCard : c))
-      // navigate(`/boards/${updatedBoard._id}`)
-    }
-  
-    const handleDeleteCard = async (cardId, listId, boardId) => {
-      const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
-      setCards(cards.filter(c => c._id !== deletedCard._id))
-      // navigate('/boards/${boardId}')
-    }
+    const newCard = await cardService.createCard(addCardFormData, listId, boardId)
+    setCards([...cards, newCard])
+  }
 
+  const handleUpdateCard = async (cardFormData, listId, boardId) => {
+    const updatedCard = await cardService.updateCard(cardFormData, listId, boardId)
+    setCards(cards.map(c => updatedCard._id === c._id ? updatedCard : c))
+  }
 
+  const handleDeleteCard = async (cardId, listId, boardId) => {
+    const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
+    setCards(cards.filter(c => c._id !== deletedCard._id))
+  }
 
-
-
-
-  // list
+  // list helper functions
   const handleSubmitListForm = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
@@ -69,8 +56,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
   }
 
-
-  // cards
+  // card helper functions
   const handleSubmitCardForm = e => {
     e.preventDefault()
     setShowAddCardForm(!showAddCardForm)
@@ -81,11 +67,6 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     setAddCardFormData({ ...addCardFormData, [e.target.name]: e.target.value })
   }
 
-
-
-
-
-
   useEffect(() => {
     const fetchCards = async () => {
       const cardsData = await cardService.getAllCards(boardId, listId)
@@ -95,10 +76,9 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   }, [listId])
 
   return (
-    
-    <div className={styles.list} ref={ref}>
+    // ref={ref}
+    <div className={styles.list} >
       <div className={styles.listHeader}>
-
         {showEditForm && 
           <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
         }
@@ -112,18 +92,12 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
           </div>
         </>
         }
-
       </div>
 
       <section className={styles.cards}>
-        {cards.map(card =>
-          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} />
+        {cards.map((card, index) =>
+          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} id={card._id} index={index} list={list} />
         )}
-        {/* <div className={styles.addCard}>
-          <h4><i className="fa-solid fa-plus fa-xs"></i> Add Card</h4>
-        </div> */}
-
-        {/*  */}
 
         <div className={styles.addCard}>
           {showAddCardForm && 
@@ -133,7 +107,6 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
           <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>
           }
         </div>
-
       </section>
     </div>
   )

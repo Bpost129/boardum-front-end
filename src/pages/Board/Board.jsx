@@ -14,7 +14,6 @@ const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
 
-
   // board
   const [board, setBoard] = useState(null)
   const [showEditForm, setShowEditForm] = useState(false)
@@ -27,27 +26,23 @@ const Board = ({ handleUpdateBoard }) => {
     title: '',
   })
   
-  
+  // list service functions
   const handleAddList = async (listFormData) => {
     const newList = await listService.createList(listFormData, boardId)
     setLists([...lists, newList])
-    // navigate(`/boards/${boardId}`)
   }
 
   const handleUpdateList = async (listFormData, boardId) => {
     const updatedList = await listService.updateList(listFormData, boardId)
     setLists(lists.map(l => updatedList._id === l._id ? updatedList : l))
-    // navigate(`/boards/${updatedBoard._id}`)
   }
 
   const handleDeleteList = async (listId, boardId) => {
     const deletedList = await listService.deleteList(listId, boardId)
     setLists(lists.filter(l => l._id !== deletedList._id))
-    // navigate('/boards/${boardId}')
   }
-  
 
-  // board
+  // board helper functinons
   const handleSubmitBoardForm = e => {
     e.preventDefault()
     setShowEditForm(!showEditForm)
@@ -58,7 +53,7 @@ const Board = ({ handleUpdateBoard }) => {
     setUpdateFormData({ ...updateFormData, _id: board._id, [e.target.name]: e.target.value })
   }
 
-  // list
+  // list helper functions
   const handleSubmitListForm = e => {
     e.preventDefault()
     setShowAddListForm(!showAddListForm)
@@ -68,11 +63,6 @@ const Board = ({ handleUpdateBoard }) => {
   const handleChangeListForm = e => {
     setAddListFormData({ ...addListFormData, [e.target.name]: e.target.value })
   }
-
-
-
-
-
   
   useEffect(() => {
     const fetchBoard = async () => {
@@ -98,21 +88,20 @@ const Board = ({ handleUpdateBoard }) => {
       {showEditForm && 
         <TitleForm cn={styles.editForm} onSub={handleSubmitBoardForm} place={board.title} val={updateFormData.title} onChan={handleChangeBoardForm} show={showEditForm} setShow={setShowEditForm} />
       }
+
       {!showEditForm && 
       <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
       }
       
       <div className={styles.board}>
-
-          {lists.map((list, index) =>
-            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
-          )}
-
-
+        {lists.map((list, index) =>
+          <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
+        )}
         <div className={styles.addList}>
           {showAddListForm && 
             <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
           }
+          
           {!showAddListForm && 
           <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
           }
