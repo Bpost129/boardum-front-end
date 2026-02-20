@@ -15,17 +15,10 @@
   scrollbar-color: grey #2f2f2f;
   scroll-snap-type: proximity;
   gap: 12px;
-
-
-  
-  /* overflow-y: scroll; */
-  /* height: 80vh; */
 }
 
 .board::-webkit-scrollbar {
   display: none;
-  /* background-color: black grey; */
-  /* overflow-y: none; */
 }
 
 .editForm {
@@ -35,10 +28,10 @@
 }
 
 .editForm input {
-  background-color: rgb(46, 46, 46);
+  width: 200px;
   border: none;
   color: white;
-  width: 200px;
+  background-color: rgb(46, 46, 46);
 }
 
 .editForm input:focus {
@@ -46,14 +39,13 @@
 }
 
 .addList {
-  height: 50px;
-  width: 260px;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  
+  height: 50px;
+  width: 260px;
   border-radius: 12px;
   gap: 12px;
 
@@ -84,5 +76,4 @@
 
 .addListForm input:focus {
   outline: none;
-
 }

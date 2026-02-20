@@ -1,15 +1,15 @@
 .card {
-  width: 240px;
-  height: 100px;
-  padding: 6px;
-  text-align: start;
-  border-radius: 12px;
-  margin: 0 12px;
-
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  text-align: start;
   
+  width: 240px;
+  height: 100px;
+  padding: 6px;
+  border-radius: 12px;
+  margin: 0 12px;
+
   background-color: rgb(98, 112, 107);
 }
 
@@ -19,25 +19,18 @@
 
 .card > .listOptions {
   visibility: hidden;
-
 }
 
 .card:hover > .listOptions {
   visibility: visible;
-
 }
-
 
 .listOptions {
   display: flex;
   flex-direction: column;
   position: relative;
   align-items: flex-end;
-
 }
-
-/* .listOptions:hover {
-} */
 
 .optionsDelete {
   margin-left: 6px;
@@ -51,12 +44,10 @@
 }
 
 .optionsDelete:hover {
-
   width: 79.75px;  
 }
 
 .optionsEdit {
-  /* margin-top: 6px; */
   margin-left: 6px;
   text-align: end;
   width: 15px;
@@ -68,11 +59,8 @@
 }
 
 .optionsEdit:hover {
-
-  /* margin-right: 1.5px; */
   width: 54px;  
 }
-/*  */
 
 .editForm {
   display: flex;
@@ -83,12 +71,11 @@
 
 .editForm input {
   width: 150px;
-  background-color: rgb(98, 112, 107);
   border: none;
   color: white;
+  background-color: rgb(98, 112, 107);
 }
 
 .editForm input:focus {
   outline: none;
-
 }

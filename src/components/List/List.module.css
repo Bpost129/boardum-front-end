@@ -1,22 +1,19 @@
 .list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  
   min-width: 260px;
   height: fit-content;
   max-height: 78vh;
   overflow-y: scroll;
   scrollbar-width: none;
-
   padding-bottom: 12px;
-    
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
   border-radius: 12px;
   gap: 12px;
 
   background-color: black;
-
 }
 
 .listHeader {
@@ -24,7 +21,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
 }
 
 .listHeader h3 {
@@ -37,8 +33,6 @@
   position: relative;
   align-items: flex-end;
 }
-
-
 
 .optionsDelete {
   margin-top: 6px;
@@ -59,7 +53,6 @@
 }
 
 .optionsEdit {
-  /* margin-top: 6px; */
   margin-right: 6px;
   text-align: end;
   width: 15px;
@@ -71,7 +64,6 @@
 }
 
 .optionsEdit:hover {
-
   margin-right: 1.5px;
   width: 58.75px;  
 }
@@ -93,8 +85,6 @@
   outline: none;
 }
 
-
-
 /* cards */
 
 .cards {
@@ -102,10 +92,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
   gap: 12px;
-
-  
 }
 
 .addCard {
@@ -115,7 +102,6 @@
   text-align: start;
   border-radius: 12px;
   margin: 0 12px;
-  
   background-color: rgba(98, 112, 107, 0.6);
 }
 
@@ -142,12 +128,11 @@
 
 .addCardForm input {
   width: 150px;
-  background-color: rgba(98, 112, 107, 0);
   border: none;
   color: white;
+  background-color: rgba(98, 112, 107, 0);
 }
 
 .addCardForm input:focus {
   outline: none;
-
 }
