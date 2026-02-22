@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-// import { useSortable } from '@dnd-kit/react/sortable'
+import { useDroppable } from '@dnd-kit/react'
+import {CollisionPriority} from '@dnd-kit/abstract'
 
 
 import Card from '../Card/Card'
@@ -13,6 +14,13 @@ import styles from './List.module.css'
 const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   // dnd-kit
   // const {ref} = useSortable({ id, index })
+  const {isDropTarget, ref} = useDroppable({
+    id,
+    type: 'column',
+    accept: 'item',
+    collisionPriority: CollisionPriority.Low,
+  })
+  const style = isDropTarget ? {background: '#00000030'} : undefined
 
 
   const listId = list._id
@@ -77,7 +85,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
 
   return (
     // ref={ref}
-    <div className={styles.list} >
+    <div className={styles.list} ref={ref} style={style}>
       <div className={styles.listHeader}>
         {showEditForm && 
           <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />

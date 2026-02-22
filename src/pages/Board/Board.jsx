@@ -97,11 +97,12 @@ const Board = ({ handleUpdateBoard }) => {
         {lists.map((list, index) =>
           <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
         )}
+        
         <div className={styles.addList}>
           {showAddListForm && 
             <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
           }
-          
+
           {!showAddListForm && 
           <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
           }
