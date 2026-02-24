@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDroppable } from '@dnd-kit/react'
-import {CollisionPriority} from '@dnd-kit/abstract'
-
+import { useDroppable, useSortable } from '@dnd-kit/react'
+import { CollisionPriority } from '@dnd-kit/abstract'
+// import { DragDropProvider } from '@dnd-kit/react'
+// import { move } from '@dnd-kit/helpers'
 
 import Card from '../Card/Card'
 import TitleForm from '../Form/TitleForm'
@@ -102,20 +103,30 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
         }
       </div>
 
-      <section className={styles.cards}>
-        {cards.map((card, index) =>
-          <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} id={card._id} index={index} list={list} />
-        )}
 
-        <div className={styles.addCard}>
-          {showAddCardForm && 
-            <TitleForm cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
-          }
-          {!showAddCardForm && 
-          <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>
-          }
-        </div>
-      </section>
+      {/* <DragDropProvider
+        onDragOver={e => {
+          setCards(cards => move(cards, e))
+        }}
+      > */}
+        <section className={styles.cards}>
+          {cards.map((card, index) =>
+            <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} id={card._id} index={index} list={list} />
+          )}
+
+          <div className={styles.addCard}>
+            {showAddCardForm && 
+              <TitleForm cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
+            }
+            {!showAddCardForm && 
+            <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>
+            }
+          </div>
+        </section>
+
+      {/* </DragDropProvider> */}
+
+
     </div>
   )
 }

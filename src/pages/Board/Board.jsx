@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-
+import { DragDropProvider } from '@dnd-kit/react'
+import { move } from '@dnd-kit/helpers'
 
 import List from '../../components/List/List'
 import TitleForm from '../../components/Form/TitleForm'
@@ -93,21 +94,33 @@ const Board = ({ handleUpdateBoard }) => {
       <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
       }
       
-      <div className={styles.board}>
-        {lists.map((list, index) =>
-          <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
-        )}
-        
-        <div className={styles.addList}>
-          {showAddListForm && 
-            <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
-          }
 
-          {!showAddListForm && 
-          <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
-          }
+      <DragDropProvider
+        onDragOver={e => {
+          setLists(lists => move(lists, e))
+        }}
+      >
+        <div className={styles.board}>
+
+          {lists.map((list, index) =>
+            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
+          )}
+
+          <div className={styles.addList}>
+            {showAddListForm && 
+              <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
+            }
+
+            {!showAddListForm && 
+            <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+            }
+          </div>
         </div>
-      </div>
+
+      </DragDropProvider>
+
+
+
     </main>
   )
 }
