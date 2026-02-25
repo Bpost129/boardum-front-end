@@ -51,7 +51,8 @@
 .optionsDelete:hover {
   margin-top: 6px;
   /* margin-right: 1.5px; */
-  width: 84px;  
+  width: 84px;
+  cursor: pointer;
 }
 
 .optionsEdit {
@@ -70,7 +71,8 @@
 .optionsEdit:hover {
   /* margin-right: 3px; */
   /* width: 58.75px;   */
-  width: 50px;  
+  width: 50px;
+  cursor: pointer;
 }
 
 .editForm {

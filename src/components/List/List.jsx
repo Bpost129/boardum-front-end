@@ -88,6 +88,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     e.preventDefault()
     setShowAddCardForm(!showAddCardForm)
     handleAddCard(addCardFormData)
+    setAddCardFormData({ title: '' })
   }
 
   const handleChangeCardForm = e => {

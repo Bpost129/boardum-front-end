@@ -47,7 +47,7 @@
 
 .optionsDelete:hover {
   width: 79.75px;  
-  
+  cursor: pointer;
 }
 
 .optionsEdit {
@@ -64,7 +64,8 @@
 }
 
 .optionsEdit:hover {
-  width: 54px;  
+  width: 54px;
+  cursor: pointer;
 }
 
 .editForm {

@@ -62,6 +62,7 @@ const Board = ({ handleUpdateBoard }) => {
     e.preventDefault()
     setShowAddListForm(!showAddListForm)
     handleAddList(addListFormData)
+    setAddListFormData({ title: '' })
   }
 
   const handleChangeListForm = e => {

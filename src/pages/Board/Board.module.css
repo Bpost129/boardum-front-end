@@ -52,6 +52,10 @@
   background-color: black;
 }
 
+.addList:hover {
+  cursor: pointer;
+}
+
 .addList span {
   display: flex;
   align-items: center;
