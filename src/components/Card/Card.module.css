@@ -41,10 +41,13 @@
   text-overflow: clip;
   overflow-y: hidden;
   overflow-x: hidden;
+
+  transition: width 250ms ease-in-out;
 }
 
 .optionsDelete:hover {
   width: 79.75px;  
+  
 }
 
 .optionsEdit {
@@ -56,6 +59,8 @@
   text-overflow: clip;
   overflow-y: hidden;
   overflow-x: hidden;
+
+  transition: width 250ms ease-in-out;
 }
 
 .optionsEdit:hover {

@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom'
 import { useDroppable } from '@dnd-kit/react'
 import { CollisionPriority } from '@dnd-kit/abstract'
 import { useSortable } from '@dnd-kit/react/sortable'
-// import { DragDropProvider } from '@dnd-kit/react'
-// import { move } from '@dnd-kit/helpers'
+import { DragDropProvider } from '@dnd-kit/react'
+import { move } from '@dnd-kit/helpers'
+import {Debug} from '@dnd-kit/dom/plugins/debug';
+
 
 import Card from '../Card/Card'
 import TitleForm from '../Form/TitleForm'
@@ -99,18 +101,24 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
           <h3>{list.title}  </h3>
           <div className={styles.listOptions}>
             <span className={styles.optionsDelete} onClick={() => handleDeleteList(list._id, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i> EDIT</span>
+            <span className={styles.optionsEdit} onClick={() => setShowEditForm(!showEditForm)}> <i className="fa-solid fa-pen fa-2xs"></i> EDIT</span>
           </div>
         </>
         }
       </div>
 
 
-      {/* <DragDropProvider
-        onDragOver={e => {
-          setCards(cards => move(cards, e))
+      <DragDropProvider
+
+        plugins={(defaults) => [Debug, ...defaults]}
+        onDragOver={(event) => {
+          const {source, target} = event.operation;
+          console.log(`${source.id} is over ${target.id}`);
+          if (source?.type === 'item') return;
+
+          setCards((cards) => move(cards, event));
         }}
-      > */}
+      >
         <section className={styles.cards}>
           {cards.map((card, index) =>
             <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} id={card._id} index={index} list={list} />
@@ -126,7 +134,7 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
           </div>
         </section>
 
-      {/* </DragDropProvider> */}
+      </DragDropProvider>
 
 
     </div>

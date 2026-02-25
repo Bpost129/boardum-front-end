@@ -44,11 +44,13 @@
   text-overflow: clip;
   overflow-y: hidden;
   overflow-x: hidden;
+
+  transition: width 250ms ease-in-out;
 }
 
 .optionsDelete:hover {
   margin-top: 6px;
-  margin-right: 1.5px;
+  /* margin-right: 1.5px; */
   width: 84px;  
 }
 
@@ -61,11 +63,14 @@
   text-overflow: clip;
   overflow-y: hidden;
   overflow-x: hidden;
+
+  transition: width 250ms ease-in-out;
 }
 
 .optionsEdit:hover {
-  margin-right: 1.5px;
-  width: 58.75px;  
+  /* margin-right: 3px; */
+  /* width: 58.75px;   */
+  width: 50px;  
 }
 
 .editForm {

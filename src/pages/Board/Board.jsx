@@ -103,18 +103,20 @@ const Board = ({ handleUpdateBoard }) => {
 
         onDragOver={(event) => {
           const {source, target} = event.operation;
-
+          console.log(`${source.id} is over ${target.id}`);
           if (source?.type === 'column') return;
 
           setLists((lists) => move(lists, event));
         }}
         onDragEnd={(event) => {
           const {source, target} = event.operation;
-
+          if (target) {
+            console.log(`Dropped ${source.id} onto ${target.id}`);
+          }
           if (event.canceled || source.type !== 'column') return;
 
           setListOrder((lists) => move(lists, event));
-        }}
+        }}  
       >
         <div className={styles.board}>
 
