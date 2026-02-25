@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { DragDropProvider } from '@dnd-kit/react'
 import { move } from '@dnd-kit/helpers'
+import {Debug} from '@dnd-kit/dom/plugins/debug';
 
 import List from '../../components/List/List'
 import TitleForm from '../../components/Form/TitleForm'
@@ -15,6 +16,7 @@ const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
 
+  
   // board
   const [board, setBoard] = useState(null)
   const [showEditForm, setShowEditForm] = useState(false)
@@ -26,6 +28,7 @@ const Board = ({ handleUpdateBoard }) => {
   const [addListFormData, setAddListFormData] = useState({
     title: '',
   })
+  const [listOrder, setListOrder] = useState(lists)
   
   // list service functions
   const handleAddList = async (listFormData) => {
@@ -96,8 +99,21 @@ const Board = ({ handleUpdateBoard }) => {
       
 
       <DragDropProvider
-        onDragOver={e => {
-          setLists(lists => move(lists, e))
+        plugins={(defaults) => [Debug, ...defaults]}
+
+        onDragOver={(event) => {
+          const {source, target} = event.operation;
+
+          if (source?.type === 'column') return;
+
+          setLists((lists) => move(lists, event));
+        }}
+        onDragEnd={(event) => {
+          const {source, target} = event.operation;
+
+          if (event.canceled || source.type !== 'column') return;
+
+          setListOrder((lists) => move(lists, event));
         }}
       >
         <div className={styles.board}>

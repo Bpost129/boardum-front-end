@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDroppable, useSortable } from '@dnd-kit/react'
+import { useDroppable } from '@dnd-kit/react'
 import { CollisionPriority } from '@dnd-kit/abstract'
+import { useSortable } from '@dnd-kit/react/sortable'
 // import { DragDropProvider } from '@dnd-kit/react'
 // import { move } from '@dnd-kit/helpers'
 
@@ -15,11 +16,12 @@ import styles from './List.module.css'
 const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   // dnd-kit
   // const {ref} = useSortable({ id, index })
-  const {isDropTarget, ref} = useDroppable({
+  const {isDropTarget, ref} = useSortable({
     id,
+    index,
     type: 'column',
-    accept: 'item',
     collisionPriority: CollisionPriority.Low,
+    accept: ['item', 'column']
   })
   const style = isDropTarget ? {background: '#00000030'} : undefined
 
