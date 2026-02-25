@@ -93,7 +93,29 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     <div className={styles.list} ref={ref} style={style}>
       <div className={styles.listHeader}>
         {showEditForm && 
-          <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
+          // <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
+          
+          <form className={styles.editForm} onSubmit={handleSubmitListForm}>
+            <select name="color" id="color-select">
+              <option value="black">⚫️</option>
+              <option value="red">🔴</option>
+              <option value="blue">🔵</option>
+              <option value="green">🟢</option>
+              <option value="yellow">🟡</option>
+            </select>
+            <input 
+            required
+            type="text" 
+            name="title"
+            id="title-input"
+            placeholder={list.title}
+            value={editFormData.title}
+            onChange={handleChangeListForm}
+            />
+            <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
+            <button type="submit">✅</button>
+          </form>
+          
         }
 
         {!showEditForm &&

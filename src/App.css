@@ -9,6 +9,14 @@
   font-weight: 600;
 }
 
+:root {
+  --list-color-red: rgb(162, 26, 26);
+  --list-color-blue: rgb(28, 28, 155);
+  --list-color-green: rgb(17, 104, 17);
+  --list-color-yellow: rgb(181, 181, 59);
+  
+}
+
 body {
   box-sizing: border-box;
 
