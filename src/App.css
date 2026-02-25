@@ -14,8 +14,22 @@
   --list-color-blue: rgb(28, 28, 155);
   --list-color-green: rgb(17, 104, 17);
   --list-color-yellow: rgb(181, 181, 59);
-  
+
 }
+
+.red {
+  background-color: var(--list-color-red);
+}
+.blue {
+  background-color: var(--list-color-blue);
+}
+.green {
+  background-color: var(--list-color-green);
+}
+.yellow {
+  background-color: var(--list-color-yellow);
+}
+
 
 body {
   box-sizing: border-box;

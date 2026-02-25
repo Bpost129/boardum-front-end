@@ -27,6 +27,20 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   })
   const style = isDropTarget ? {background: '#00000030'} : undefined
 
+  const getListColor = () => {
+    switch (list.color) {
+      case 'Red':
+        return 'red'
+      case 'Blue':
+        return 'blue'
+      case 'Green':
+        return 'green'
+      case 'Yellow':
+        return 'yellow'
+      default:
+        return 'black'
+    }
+  }
 
   const listId = list._id
   const { boardId } = useParams()
@@ -90,18 +104,18 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
 
   return (
     // ref={ref}
-    <div className={styles.list} ref={ref} style={style}>
+    <div className={`${styles.list} ${getListColor()}`} ref={ref} style={style}>
       <div className={styles.listHeader}>
         {showEditForm && 
           // <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
           
           <form className={styles.editForm} onSubmit={handleSubmitListForm}>
-            <select name="color" id="color-select">
-              <option value="black">⚫️</option>
-              <option value="red">🔴</option>
-              <option value="blue">🔵</option>
-              <option value="green">🟢</option>
-              <option value="yellow">🟡</option>
+            <select name="color" id="color-select" value={editFormData.color} onChange={handleChangeListForm}>
+              <option value="Black">⚫️</option>
+              <option value="Red">🔴</option>
+              <option value="Blue">🔵</option>
+              <option value="Green">🟢</option>
+              <option value="Yellow">🟡</option>
             </select>
             <input 
             required

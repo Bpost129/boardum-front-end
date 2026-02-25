@@ -75,15 +75,23 @@
 
 .editForm {
   display: flex;
-  margin-top: 12px;
-  margin-bottom: 3.5px;
+  margin: 12px 6px 3.5px 6px;
+  
 }
 
+/* .editForm select {
+  margin-left: 6px;
+  margin-right: 0;
+} */
+
 .editForm input {
-  width: 180px;
+  width: 155px;
   background-color: black;
   border: none;
   color: white;
+  font-weight: 600;
+  /* margin-right: 6px; */
+  margin-left: 0;
 }
 
 .editForm input:focus {
@@ -107,7 +115,7 @@
   text-align: start;
   border-radius: 12px;
   margin: 0 12px;
-  background-color: rgba(98, 112, 107, 0.6);
+  background-color: rgba(98, 112, 107, 0.499);
 }
 
 
