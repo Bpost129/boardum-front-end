@@ -46,8 +46,8 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   const { boardId } = useParams()
   
   // list
-  const [showEditForm, setShowEditForm] = useState(false)
-  const [editFormData, setEditFormData] = useState(list)
+  const [showEditListForm, setShowEditListForm] = useState(false)
+  const [editListFormData, setEditListFormData] = useState(list)
   
   // cards
   const [cards, setCards] = useState([])
@@ -75,12 +75,12 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   // list helper functions
   const handleSubmitListForm = e => {
     e.preventDefault()
-    setShowEditForm(!showEditForm)
-    handleUpdateList(editFormData, boardId)
+    setShowEditListForm(!showEditListForm)
+    handleUpdateList(editListFormData, boardId)
   }
 
   const handleChangeListForm = e => {
-    setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
+    setEditListFormData({ ...editListFormData, [e.target.name]: e.target.value })
   }
 
   // card helper functions
@@ -107,11 +107,9 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
     // ref={ref}
     <div className={`${styles.list} ${getListColor()}`} ref={ref} style={style}>
       <div className={styles.listHeader}>
-        {showEditForm && 
-          // <TitleForm cn={styles.editForm} onSub={handleSubmitListForm} place={list.title} val={editFormData.title} onChan={handleChangeListForm} show={showEditForm} setShow={setShowEditForm} />
-          
+        {showEditListForm && 
           <form className={styles.editForm} onSubmit={handleSubmitListForm}>
-            <select name="color" id="color-select" value={editFormData.color} onChange={handleChangeListForm}>
+            <select name="color" id="color-select" value={editListFormData.color} onChange={handleChangeListForm}>
               <option value="Black">⚫️</option>
               <option value="Red">🔴</option>
               <option value="Blue">🔵</option>
@@ -119,38 +117,42 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
               <option value="Yellow">🟡</option>
             </select>
             <input 
-            required
-            type="text" 
-            name="title"
-            id="title-input"
-            placeholder={list.title}
-            value={editFormData.title}
-            onChange={handleChangeListForm}
+              required
+              type="text" 
+              name="title"
+              id="title-input"
+              placeholder={list.title}
+              value={editListFormData.title}
+              onChange={handleChangeListForm}
             />
-            <button onClick={() => setShowEditForm(!showEditForm)}>❌</button>
+            <button onClick={() => setShowEditListForm(!showEditListForm)}>❌</button>
             <button type="submit">✅</button>
           </form>
-          
         }
 
-        {!showEditForm &&
-        <>
-          <h3>{list.title}  </h3>
-          <div className={styles.listOptions}>
-            <span className={styles.optionsDelete} onClick={() => handleDeleteList(list._id, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-            <span className={styles.optionsEdit} onClick={() => setShowEditForm(!showEditForm)}> <i className="fa-solid fa-pen fa-2xs"></i> EDIT</span>
-          </div>
-        </>
+        {!showEditListForm &&
+          <>
+            <h3>{list.title}  </h3>
+            <div className={styles.listOptions}>
+              <span className={styles.optionsDelete} onClick={() => handleDeleteList(list._id, boardId)}>
+                <i className="fa-regular fa-square-minus"></i> DELETE
+              </span>
+              <span className={styles.optionsEdit} onClick={() => setShowEditListForm(!showEditListForm)}> 
+                <i className="fa-solid fa-pen fa-2xs"></i> EDIT
+              </span>
+            </div>
+          </>
         }
       </div>
 
 
       <DragDropProvider
-
         plugins={(defaults) => [Debug, ...defaults]}
         onDragOver={(event) => {
           const {source, target} = event.operation;
+
           console.log(`${source.id} is over ${target.id}`);
+
           if (source?.type === 'item') return;
 
           setCards((cards) => move(cards, event));
@@ -158,22 +160,38 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
       >
         <section className={styles.cards}>
           {cards.map((card, index) =>
-            <Card key={card._id} card={card} listId={listId} handleDeleteCard={handleDeleteCard} handleUpdateCard={handleUpdateCard} id={card._id} index={index} list={list} />
+            <Card 
+              key={card._id} 
+              card={card} 
+              listId={listId} 
+              handleDeleteCard={handleDeleteCard} 
+              handleUpdateCard={handleUpdateCard} 
+              id={card._id} 
+              index={index} 
+              list={list} 
+            />
           )}
 
           <div className={styles.addCard}>
             {showAddCardForm && 
-              <TitleForm cn={styles.addCardForm} onSub={handleSubmitCardForm} place="Add a title" val={addCardFormData.title} onChan={handleChangeCardForm} show={showAddCardForm} setShow={setShowAddCardForm} />
+              <TitleForm 
+                cn={styles.addCardForm} 
+                onSub={handleSubmitCardForm} 
+                place="Add a title" 
+                val={addCardFormData.title} 
+                onChan={handleChangeCardForm} 
+                show={showAddCardForm} 
+                setShow={setShowAddCardForm} 
+              />
             }
             {!showAddCardForm && 
-            <span onClick={() => setShowAddCardForm(!showAddCardForm)}> <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> </span>
+              <span onClick={() => setShowAddCardForm(!showAddCardForm)}> 
+                <i className="fa-solid fa-plus"></i> <h4>Add Card</h4> 
+              </span>
             }
           </div>
         </section>
-
       </DragDropProvider>
-
-
     </div>
   )
 }

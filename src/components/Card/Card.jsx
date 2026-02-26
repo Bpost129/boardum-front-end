@@ -17,33 +17,41 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index, li
   })
   
   const { boardId } = useParams()
-  const [showEditForm, setShowEditForm] = useState(false)
+  const [showEditCardForm, setShowEditCardForm] = useState(false)
   const [editFormData, setEditFormData] = useState(card)
 
-  const handleSubmit = e => {
+  const handleSubmitCardForm = e => {
     e.preventDefault()
-    setShowEditForm(!showEditForm)
+    setShowEditCardForm(!showEditCardForm)
     handleUpdateCard(editFormData, listId, boardId)
   }
 
-  const handleChange = e => {
+  const handleChangeCardForm = e => {
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
   }
 
   return (
     <div className={styles.card} ref={ref} data-dragging={isDragging}>
-      {showEditForm && 
-        <TitleForm cn={styles.editForm} onSub={handleSubmit} place={card.title} val={editFormData.title} onChan={handleChange} show={showEditForm} setShow={setShowEditForm} />
+      {showEditCardForm && 
+        <TitleForm 
+          cn={styles.editForm} 
+          onSub={handleSubmitCardForm} 
+          place={card.title} 
+          val={editFormData.title} 
+          onChan={handleChangeCardForm} 
+          show={showEditCardForm} 
+          setShow={setShowEditCardForm} 
+        />
       }
 
-      {!showEditForm &&
-      <>
-        <h5>{card.title}  </h5>
-        <div className={styles.listOptions}>
-          <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-          <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i> EDIT</span>
-        </div>
-      </>
+      {!showEditCardForm &&
+        <>
+          <h5>{card.title}  </h5>
+          <div className={styles.listOptions}>
+            <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
+            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditCardForm(!showEditForm)}></i> EDIT</span>
+          </div>
+        </>
       }
     </div>
   )

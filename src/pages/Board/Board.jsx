@@ -15,12 +15,11 @@ import styles from './Board.module.css'
 const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
   const { boardId } = useParams()
-
   
   // board
   const [board, setBoard] = useState(null)
-  const [showEditForm, setShowEditForm] = useState(false)
-  const [updateFormData, setUpdateFormData] = useState(state)
+  const [showEditBoardForm, setShowEditBoardForm] = useState(false)
+  const [editBoardFormData, setEditBoardFormData] = useState(state)
   
   // list
   const [lists, setLists] = useState([])
@@ -28,6 +27,8 @@ const Board = ({ handleUpdateBoard }) => {
   const [addListFormData, setAddListFormData] = useState({
     title: '',
   })
+
+  // dnd-kit
   const [listOrder, setListOrder] = useState(lists)
   
   // list service functions
@@ -49,12 +50,12 @@ const Board = ({ handleUpdateBoard }) => {
   // board helper functinons
   const handleSubmitBoardForm = e => {
     e.preventDefault()
-    setShowEditForm(!showEditForm)
-    handleUpdateBoard(updateFormData)
+    setShowEditBoardForm(!showEditBoardForm)
+    handleUpdateBoard(editBoardFormData)
   }
 
   const handleChangeBoardForm = e => {
-    setUpdateFormData({ ...updateFormData, _id: board._id, [e.target.name]: e.target.value })
+    setEditBoardFormData({ ...editBoardFormData, _id: board._id, [e.target.name]: e.target.value })
   }
 
   // list helper functions
@@ -90,14 +91,21 @@ const Board = ({ handleUpdateBoard }) => {
 
   return (
     <main className={styles.container}>
-      {showEditForm && 
-        <TitleForm cn={styles.editForm} onSub={handleSubmitBoardForm} place={board.title} val={updateFormData.title} onChan={handleChangeBoardForm} show={showEditForm} setShow={setShowEditForm} />
+      {showEditBoardForm && 
+        <TitleForm 
+          cn={styles.editForm} 
+          onSub={handleSubmitBoardForm} 
+          place={board.title} 
+          val={editBoardFormData.title} 
+          onChan={handleChangeBoardForm} 
+          show={showEditBoardForm} 
+          setShow={setShowEditBoardForm} 
+        />
       }
 
-      {!showEditForm && 
-      <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditForm(!showEditForm)}></i></h1>
+      {!showEditBoardForm && 
+        <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditBoardForm(!showEditBoardForm)}></i></h1>
       }
-      
 
       <DragDropProvider
         plugins={(defaults) => [Debug, ...defaults]}
@@ -109,6 +117,7 @@ const Board = ({ handleUpdateBoard }) => {
 
           setLists((lists) => move(lists, event));
         }}
+
         onDragEnd={(event) => {
           const {source, target} = event.operation;
           if (target) {
@@ -120,18 +129,34 @@ const Board = ({ handleUpdateBoard }) => {
         }}  
       >
         <div className={styles.board}>
-
           {lists.map((list, index) =>
-            <List key={list._id} list={list} handleDeleteList={handleDeleteList} handleUpdateList={handleUpdateList} id={list._id} index={index} /> 
+            <List 
+              key={list._id} 
+              list={list} 
+              handleDeleteList={handleDeleteList} 
+              handleUpdateList={handleUpdateList} 
+              id={list._id} 
+              index={index} 
+            /> 
           )}
 
           <div className={styles.addList}>
             {showAddListForm && 
-              <TitleForm cn={styles.addListForm} onSub={handleSubmitListForm} place="Add a title" val={addListFormData.title} onChan={handleChangeListForm} show={showAddListForm} setShow={setShowAddListForm} />
+              <TitleForm 
+                cn={styles.addListForm} 
+                onSub={handleSubmitListForm} 
+                place="Add a title" 
+                val={addListFormData.title} 
+                onChan={handleChangeListForm} 
+                show={showAddListForm} 
+                setShow={setShowAddListForm} 
+              />
             }
 
             {!showAddListForm && 
-            <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> <i className="fa-solid fa-plus"></i> <h3>Add List</h3> </span>
+              <span className={styles.addListDiv} onClick={() => setShowAddListForm(!showAddListForm)}> 
+                <i className="fa-solid fa-plus"></i> <h3>Add List</h3> 
+              </span>
             }
           </div>
         </div>
