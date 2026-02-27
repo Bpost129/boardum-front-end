@@ -79,7 +79,7 @@
   width: 150px;
   border: none;
   color: white;
-  background-color: rgb(98, 112, 107);
+  background-color: rgba(98, 112, 107, 0);
 }
 
 .editForm input:focus {

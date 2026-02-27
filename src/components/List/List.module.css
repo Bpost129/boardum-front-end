@@ -93,7 +93,7 @@
 
 .editForm input {
   width: 155px;
-  background-color: black;
+  background-color: rgba(98, 112, 107, 0);
   border: none;
   color: white;
   font-weight: 600;
