@@ -1,0 +1,48 @@
+.boardCard {
+  height: 160px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* border: 1px solid rgb(193, 193, 193); */
+  border-radius: 12px;
+  background-color: rgba(155, 73, 228, 0.36);
+}
+
+.boardCard:hover span{
+  visibility: visible;
+}
+
+.boardCard span {
+  margin-top: 6px;
+  margin-right: 6px;
+  text-align: end;
+  width: 15px;
+  height: 18px;
+  direction: rtl;
+  text-overflow: clip;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  visibility: hidden;
+}
+
+
+
+.boardCard span:hover {
+  margin-top: 6px;
+  margin-right: 1.5px;
+  width: 84px;  
+}
+
+.boardCard h3 {
+  margin: 0 auto;
+  padding: 18px 0 14px 14px;
+  width: 250px;
+  text-align: start;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid rgb(193, 193, 193, .5);
+  background-color: rgb(92, 92, 92);
+}

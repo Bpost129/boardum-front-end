@@ -27,6 +27,21 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
   })
   const style = isDropTarget ? {background: '#00000030'} : undefined
 
+  
+  const listId = list._id
+  const { boardId } = useParams()
+  
+  // list
+  const [showEditListForm, setShowEditListForm] = useState(false)
+  const [editListFormData, setEditListFormData] = useState(list)
+  
+  // cards
+  const [cards, setCards] = useState([])
+  const [showAddCardForm, setShowAddCardForm] = useState(false)
+  const [addCardFormData, setAddCardFormData] = useState({
+    title: '',
+  })
+  
   const getListColor = () => {
     switch (list.color) {
       case 'Red':
@@ -41,20 +56,6 @@ const List = ({ list, handleDeleteList, handleUpdateList, id, index }) => {
         return 'black'
     }
   }
-
-  const listId = list._id
-  const { boardId } = useParams()
-  
-  // list
-  const [showEditListForm, setShowEditListForm] = useState(false)
-  const [editListFormData, setEditListFormData] = useState(list)
-  
-  // cards
-  const [cards, setCards] = useState([])
-  const [showAddCardForm, setShowAddCardForm] = useState(false)
-  const [addCardFormData, setAddCardFormData] = useState({
-    title: '',
-  })
 
   // card service functions
   const handleAddCard = async (addCardFormData) => {
