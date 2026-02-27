@@ -23,6 +23,10 @@
   justify-content: space-between;
 }
 
+.listHeader:hover .listOptions {
+  visibility: visible;
+}
+
 .listHeader h3 {
   margin: 12px 12px 0 24px;
 }
@@ -32,6 +36,7 @@
   flex-direction: column;
   position: relative;
   align-items: flex-end;
+  visibility: hidden;
 }
 
 .optionsDelete {

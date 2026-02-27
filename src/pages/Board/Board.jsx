@@ -104,7 +104,7 @@ const Board = ({ handleUpdateBoard }) => {
       }
 
       {!showEditBoardForm && 
-        <h1>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditBoardForm(!showEditBoardForm)}></i></h1>
+        <h1 className={styles.boardTitle}>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditBoardForm(!showEditBoardForm)}></i></h1>
       }
 
       <DragDropProvider
