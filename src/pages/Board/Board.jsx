@@ -5,12 +5,15 @@ import { move } from '@dnd-kit/helpers'
 import {Debug} from '@dnd-kit/dom/plugins/debug';
 
 import List from '../../components/List/List'
+// import Card from '../../components/Card/Card';
 import TitleForm from '../../components/Form/TitleForm'
 
 import { getBoard } from '../../services/boardService'
 import * as listService from '../../services/listService'
+// import * as cardService from '../../services/cardService'
 
 import styles from './Board.module.css'
+
 
 const Board = ({ handleUpdateBoard }) => {
   const { state } = useLocation()
@@ -27,6 +30,9 @@ const Board = ({ handleUpdateBoard }) => {
   const [addListFormData, setAddListFormData] = useState({
     title: '',
   })
+
+  // card
+  // const [cards, setCards] = useState([])
 
   // dnd-kit
   const [listOrder, setListOrder] = useState(lists)
@@ -46,6 +52,22 @@ const Board = ({ handleUpdateBoard }) => {
     const deletedList = await listService.deleteList(listId, boardId)
     setLists(lists.filter(l => l._id !== deletedList._id))
   }
+
+  // card service functions
+  // const handleAddCard = async (addCardFormData) => {
+  //   const newCard = await cardService.createCard(addCardFormData, listId, boardId)
+  //   setCards([...cards, newCard])
+  // }
+
+  // const handleUpdateCard = async (cardFormData, listId, boardId) => {
+  //   const updatedCard = await cardService.updateCard(cardFormData, listId, boardId)
+  //   setCards(cards.map(c => updatedCard._id === c._id ? updatedCard : c))
+  // }
+
+  // const handleDeleteCard = async (cardId, listId, boardId) => {
+  //   const deletedCard = await cardService.deleteCard(cardId, listId, boardId)
+  //   setCards(cards.filter(c => c._id !== deletedCard._id))
+  // }
 
   // board helper functinons
   const handleSubmitBoardForm = e => {
@@ -83,6 +105,13 @@ const Board = ({ handleUpdateBoard }) => {
       }
       fetchLists()
     })
+    // .then(() => {
+    //   const fetchCards = async () => {
+    //     const cardsData = await cardService.getAllCards(boardId, listId)
+    //     setCards(cardsData)
+    //   }
+    //   fetchCards()
+    // })
   }, [state])
 
   if (!board) {
@@ -104,7 +133,9 @@ const Board = ({ handleUpdateBoard }) => {
       }
 
       {!showEditBoardForm && 
-        <h1 className={styles.boardTitle}>{board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditBoardForm(!showEditBoardForm)}></i></h1>
+        <h1 className={styles.boardTitle}>
+          {board.title} <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditBoardForm(!showEditBoardForm)}></i>
+        </h1>
       }
 
       <DragDropProvider
@@ -130,6 +161,7 @@ const Board = ({ handleUpdateBoard }) => {
       >
         <div className={styles.board}>
           {lists.map((list, index) =>
+          <>
             <List 
               key={list._id} 
               list={list} 
@@ -137,7 +169,23 @@ const Board = ({ handleUpdateBoard }) => {
               handleUpdateList={handleUpdateList} 
               id={list._id} 
               index={index} 
-            /> 
+            />
+              
+            {/* {list.cards.map((card, index) => 
+              <Card 
+                key={card._id} 
+                card={card} 
+                listId={list._id} 
+                handleDeleteCard={handleDeleteCard} 
+                handleUpdateCard={handleUpdateCard} 
+                id={card._id} 
+                index={index} 
+                list={list}
+              />
+
+            )}
+            </List>  */}
+          </>
           )}
 
           <div className={styles.addList}>
