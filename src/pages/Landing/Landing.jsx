@@ -50,9 +50,10 @@ const Landing = ({ user, boards, handleAddBoard, handleDeleteBoard }) => {
                 placeholder="Add title..."
                 value={formData.title}
                 onChange={handleChange}
+                autoFocus
                 />
-                <button onClick={() => setShowAddForm(!showAddForm)}>❌</button>
                 <button type="submit">✅</button>
+                <button onClick={() => setShowAddForm(!showAddForm)}>❌</button>
               </form>
             </div>
             }

@@ -10,9 +10,10 @@ const TitleForm = ({ cn, onSub, place, val, onChan, show, setShow }) => {
         placeholder={place}
         value={val}
         onChange={onChan}
+        autoFocus
         />
-        <button onClick={() => setShow(!show)}>❌</button>
         <button type="submit">✅</button>
+        <button onClick={() => setShow(!show)}>❌</button>
       </form>
     </>
   )
