@@ -21,7 +21,7 @@ const List = ({
 }) => {
   // dnd-kit
   // const {ref} = useSortable({ id, index })
-  const {isDropTarget, ref} = useSortable({
+  const { ref } = useSortable({
     id,
     index,
     type: 'column',

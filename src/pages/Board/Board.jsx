@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { DragDropProvider } from '@dnd-kit/react'
-import { Debug } from '@dnd-kit/dom/plugins/debug'
+// import { Debug } from '@dnd-kit/dom/plugins/debug'
 
 import * as cardService from '../../services/cardService'
 import * as listService from '../../services/listService'
