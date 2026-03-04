@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSortable } from '@dnd-kit/react/sortable'
 
@@ -6,24 +6,30 @@ import TitleForm from '../Form/TitleForm'
 
 import styles from './Card.module.css'
 
-const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index, list }) => {
+const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) => {
   // dnd-kit
   const {ref, isDragging} = useSortable({
     id,
     index,
     type: 'item',
     accept: 'item',
-    group: list
   })
   
   const { boardId } = useParams()
   const [showEditCardForm, setShowEditCardForm] = useState(false)
   const [editFormData, setEditFormData] = useState(card)
 
+  // keep local form state in sync if the card prop changes (e.g. list update)
+  useEffect(() => {
+    setEditFormData(card)
+  }, [card])
+
   const handleSubmitCardForm = e => {
     e.preventDefault()
     setShowEditCardForm(!showEditCardForm)
-    handleUpdateCard(editFormData, listId, boardId)
+    if (editFormData && editFormData._id) {
+      handleUpdateCard(editFormData, listId, boardId)
+    }
   }
 
   const handleChangeCardForm = e => {

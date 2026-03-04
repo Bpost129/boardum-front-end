@@ -63,3 +63,19 @@ export async function deleteList(listId, boardId) {
     throw new Error(err)
   }
 }
+
+export async function updateListOrder(listOrderUpdates, boardId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${boardId}/lists/batch-update-order`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(listOrderUpdates)
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
