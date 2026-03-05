@@ -110,7 +110,7 @@ const List = ({
               onChange={handleChangeListForm}
             />
             <section className={styles.formBtns}>
-              <button className={styles.submitBtn} type="submit">Edit List</button>
+              <button className={styles.submitBtn} type="submit">Edit</button>
               <button className={styles.cancelBtn} onClick={() => setShowEditListForm(!showEditListForm)}>X</button>
             </section>
           </form>
@@ -118,7 +118,7 @@ const List = ({
 
         {!showEditListForm &&
           <>
-            <h3>{list.title}  </h3>
+            <h3><span data-text={list.title}>{list.title}</span></h3>
             <div className={styles.listOptions}>
               <span className={styles.optionsDelete} onClick={() => handleDeleteList(list._id, boardId)}>
                 <i className="fa-regular fa-square-minus"></i> DELETE

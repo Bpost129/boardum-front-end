@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   
-  min-width: 260px;
+  width: 260px;
   height: fit-content;
   max-height: 78vh;
   overflow-y: scroll;
@@ -21,6 +21,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
 }
 
 .listHeader:hover .listOptions {
@@ -28,8 +29,30 @@
 }
 
 .listHeader h3 {
-  margin: 12px 12px 0 24px;
+  margin: 12px 12px 0 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+
+.listHeader h3:hover span {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  padding-right: 1rem; /* spacing between repeats */
+  animation: scroll 10s linear infinite;
+}
+
+.listHeader h3:hover span::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 100%;
+  white-space: nowrap;
+  padding-left: 1rem;
+}
+
+
 
 .listOptions {
   display: flex;
@@ -84,8 +107,8 @@
   width: 230px;
   display: flex;
   flex-wrap: nowrap;
-  margin-left: 6px;
-  margin-top: 6px;
+  
+  margin: 12.5px 6px 0 6px;
 }
 
 .editForm select {
@@ -106,7 +129,7 @@
 }
 
 .editForm input {
-  width: 128px;
+  width: 150px;
   background-color: rgba(98, 112, 107, 0);
   border: none;
   color: white;
@@ -197,7 +220,7 @@
   background-color: rgb(46, 46, 46, 0.5);
   padding: 6px;
   border-radius: 4px;
-  width: 70px;
+  width: 40px;
   height: 28px;
   transition: background-color 250ms ease-in-out;
 }
@@ -218,3 +241,7 @@
   transition: background-color 250ms ease-in-out;
 }
 
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
