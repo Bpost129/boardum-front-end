@@ -81,18 +81,32 @@
 }
 
 .editForm {
+  width: 230px;
   display: flex;
-  /* margin: 12px 6px 3.5px 6px; */
-  
+  flex-wrap: nowrap;
+  margin-left: 6px;
+  margin-top: 6px;
 }
 
-/* .editForm select {
-  margin-left: 6px;
-  margin-right: 0;
-} */
+.editForm select {
 
-.editForm textarea {
-  width: 155px;
+  background-color: rgba(46, 46, 46, 0.8);
+  border-radius: 6px;
+  border: none;
+  color: white;
+}
+
+.editForm select:focus {
+  outline: none;
+  background-color: rgba(46, 46, 46, 0.5);
+}
+
+.formBtns {
+  display: flex;
+}
+
+.editForm input {
+  width: 128px;
   background-color: rgba(98, 112, 107, 0);
   border: none;
   color: white;
@@ -103,8 +117,9 @@
   font-weight: 600;
 }
 
-.editForm textarea:focus {
+.editForm input:focus {
   outline: none;
+  /* background-color: rgba(46, 46, 46, 0.5); */
   font-family: "Red Hat Text", sans-serif;
   font-weight: 600;
 }
@@ -179,24 +194,27 @@
   margin-left: 0;
   border: none;
   color: white;
-  background-color: rgb(46, 46, 46);
+  background-color: rgb(46, 46, 46, 0.5);
   padding: 6px;
-  border-radius: 12px;
-  width: 80px;
+  border-radius: 4px;
+  width: 70px;
+  height: 28px;
   transition: background-color 250ms ease-in-out;
 }
 .submitBtn:hover {
   background-color: rgb(98, 112, 107);
   cursor: pointer;
 }
+.cancelBtn {
+  margin-left: 2px;
 
-/* .cancelBtn {
-  margin-left: 0;
   border: none;
+  height: 28px;
   color: white;
-  background-color: rgb(46, 46, 46);
-  padding: 6px;
-  border-radius: 12px;
-  width: 40px;
+  background-color: rgb(46, 46, 46, 0.5);
+  padding: 0;
+  border-radius: 4px;
+  width: 20px;
   transition: background-color 250ms ease-in-out;
-} */
+}
+

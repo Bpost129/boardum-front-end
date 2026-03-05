@@ -109,8 +109,10 @@ const List = ({
               value={editListFormData.title}
               onChange={handleChangeListForm}
             />
-            <button className={styles.submitBtn} type="submit">Add List</button>
-            <button className={styles.cancelBtn} onClick={() => setShowEditListForm(!showEditListForm)}>X</button>
+            <section className={styles.formBtns}>
+              <button className={styles.submitBtn} type="submit">Edit List</button>
+              <button className={styles.cancelBtn} onClick={() => setShowEditListForm(!showEditListForm)}>X</button>
+            </section>
           </form>
         }
 
