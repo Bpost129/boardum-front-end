@@ -5,7 +5,7 @@
   text-align: start;
   
   width: 240px;
-  height: 100px;
+  height: fit-content;
   padding: 6px;
   border-radius: 12px;
   margin: 0 12px;
@@ -13,8 +13,12 @@
   background-color: rgba(98, 112, 107, 0.85);
 }
 
-.card h5 {
+.cardTitle {
   margin: 2px 2px;
+}
+
+.cardTitle:hover {
+  cursor: pointer;
 }
 
 .card > .listOptions {
@@ -70,18 +74,30 @@
 
 .editForm {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 240px;
+  flex-wrap: wrap;
 }
 
 
-.editForm input {
-  width: 150px;
+.editForm textarea {
+  width: 230px;
+  height: fit-content;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 600;
+  field-sizing: content;
+  line-height: normal;
+  resize: none;
+  margin-bottom: 6px;
   border: none;
   color: white;
   background-color: rgba(98, 112, 107, 0);
 }
 
-.editForm input:focus {
+.editForm textarea:focus {
   outline: none;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 600;
 }

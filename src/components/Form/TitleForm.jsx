@@ -1,8 +1,10 @@
-const TitleForm = ({ cn, onSub, place, val, onChan, show, setShow }) => {
+import styles from './TitleForm.module.css'
+
+const TitleForm = ({ cn, onSub, place, val, onChan, show, setShow, subBtn }) => {
   return (
     <>
       <form className={cn} onSubmit={onSub}>
-        <input 
+        <textarea 
         required
         type="text" 
         name="title"
@@ -12,8 +14,11 @@ const TitleForm = ({ cn, onSub, place, val, onChan, show, setShow }) => {
         onChange={onChan}
         autoFocus
         />
-        <button type="submit">✅</button>
-        <button onClick={() => setShow(!show)}>❌</button>
+        <section className={styles.formBtns}>
+          <button className={styles.submitBtn} type="submit">{subBtn}</button>
+          <button className={styles.cancelBtn} onClick={() => setShow(!show)}>X</button>
+
+        </section>
       </form>
     </>
   )

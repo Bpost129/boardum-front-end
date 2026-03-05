@@ -109,8 +109,8 @@ const List = ({
               value={editListFormData.title}
               onChange={handleChangeListForm}
             />
-            <button type="submit">✅</button>
-            <button onClick={() => setShowEditListForm(!showEditListForm)}>❌</button>
+            <button className={styles.submitBtn} type="submit">Add List</button>
+            <button className={styles.cancelBtn} onClick={() => setShowEditListForm(!showEditListForm)}>X</button>
           </form>
         }
 
@@ -154,6 +154,7 @@ const List = ({
                 onChan={handleChangeCardForm} 
                 show={showAddCardForm} 
                 setShow={setShowAddCardForm} 
+                subBtn="Add Card"
               />
             }
             {!showAddCardForm && 

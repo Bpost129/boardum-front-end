@@ -42,14 +42,15 @@
   margin-bottom: 31px;
 }
 
-.editForm input {
+.editForm textarea {
   width: 200px;
   border: none;
   color: white;
   background-color: rgb(46, 46, 46);
+  margin-left: 0;
 }
 
-.editForm input:focus {
+.editForm textarea:focus {
   outline: none;
 }
 
@@ -86,13 +87,18 @@
 }
 
 
-.addListForm input {
+.addListForm textarea {
   width: 180px;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 600;
   background-color: black;
   border: none;
   color: white;
+  margin-left: 0;
 }
 
-.addListForm input:focus {
+.addListForm textarea:focus {
   outline: none;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 600;
 }

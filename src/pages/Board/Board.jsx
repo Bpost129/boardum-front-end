@@ -221,7 +221,8 @@ const Board = ({ handleUpdateBoard }) => {
           val={editBoardFormData.title} 
           onChan={handleChangeBoardForm} 
           show={showEditBoardForm} 
-          setShow={setShowEditBoardForm} 
+          setShow={setShowEditBoardForm}
+          subBtn="Edit Board"
         />
       }
 
@@ -388,7 +389,8 @@ const Board = ({ handleUpdateBoard }) => {
                 val={addListFormData.title} 
                 onChan={handleChangeListForm} 
                 show={showAddListForm} 
-                setShow={setShowAddListForm} 
+                setShow={setShowAddListForm}
+                subBtn="Add List"
               />
             }
 

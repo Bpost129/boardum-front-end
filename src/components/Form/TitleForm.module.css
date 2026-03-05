@@ -1,0 +1,28 @@
+.submitBtn {
+  margin-left: 0;
+  border: none;
+  height: 28px;
+  color: white;
+  background-color: rgb(46, 46, 46, 0.5);
+  padding: 6px;
+  border-radius: 4px;
+  width: 80px;
+  transition: background-color 250ms ease-in-out;
+}
+.submitBtn:hover {
+  background-color: rgb(98, 112, 107);
+  cursor: pointer;
+}
+
+.cancelBtn {
+  margin-left: 2px;
+
+  border: none;
+  height: 28px;
+  color: white;
+  background-color: rgb(46, 46, 46, 0.5);
+  padding: 0;
+  border-radius: 4px;
+  width: 20px;
+  transition: background-color 250ms ease-in-out;
+}

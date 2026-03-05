@@ -46,16 +46,17 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
           val={editFormData.title} 
           onChan={handleChangeCardForm} 
           show={showEditCardForm} 
-          setShow={setShowEditCardForm} 
+          setShow={setShowEditCardForm}
+          subBtn="Edit Card" 
         />
       }
 
       {!showEditCardForm &&
         <>
-          <h5>{card.title}  </h5>
+          <h5 className={styles.cardTitle} onClick={() => setShowEditCardForm(!showEditCardForm)}>{card.title}  </h5>
           <div className={styles.listOptions}>
             <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" onClick={() => setShowEditCardForm(!showEditCardForm)}></i> EDIT</span>
+            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" ></i> EDIT</span>
           </div>
         </>
       }
