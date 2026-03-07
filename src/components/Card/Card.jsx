@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useSortable } from '@dnd-kit/react/sortable'
 
 import TitleForm from '../Form/TitleForm'
+import CardDetails from '../CardDetails/CardDetails'
 
 import styles from './Card.module.css'
 
@@ -18,6 +19,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
   const { boardId } = useParams()
   const [showEditCardForm, setShowEditCardForm] = useState(false)
   const [editFormData, setEditFormData] = useState(card)
+  const [showCardDetails, setShowCardDetails] = useState(false)
 
   // keep local form state in sync if the card prop changes (e.g. list update)
   useEffect(() => {
@@ -37,30 +39,35 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
   }
 
   return (
-    <div className={styles.card} ref={ref} data-dragging={isDragging}>
-      {showEditCardForm && 
-        <TitleForm 
-          cn={styles.editForm} 
-          onSub={handleSubmitCardForm} 
-          place={card.title} 
-          val={editFormData.title} 
-          onChan={handleChangeCardForm} 
-          show={showEditCardForm} 
-          setShow={setShowEditCardForm}
-          subBtn="Edit Card" 
-        />
-      }
+    <>
+      <div className={styles.card} ref={ref} data-dragging={isDragging}>
+        {showEditCardForm && 
+          <TitleForm 
+            cn={styles.editForm} 
+            onSub={handleSubmitCardForm} 
+            place={card.title} 
+            val={editFormData.title} 
+            onChan={handleChangeCardForm} 
+            show={showEditCardForm} 
+            setShow={setShowEditCardForm}
+            subBtn="Edit Card" 
+          />
+        }
 
-      {!showEditCardForm &&
-        <>
-          <h5 className={styles.cardTitle} onClick={() => setShowEditCardForm(!showEditCardForm)}>{card.title}  </h5>
-          <div className={styles.listOptions}>
-            <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
-            <span className={styles.optionsEdit}> <i className="fa-solid fa-pen fa-2xs" ></i> EDIT</span>
-          </div>
-        </>
+        {!showEditCardForm &&
+          <>
+            <h5 className={styles.cardTitle} onClick={() => setShowEditCardForm(!showEditCardForm)}>{card.title}  </h5>
+            <div className={styles.listOptions}>
+              <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
+              <span className={styles.optionsEdit} onClick={() => setShowCardDetails(!showCardDetails)}> <i className="fa-solid fa-pen fa-2xs" ></i> EDIT</span>
+            </div>
+          </>
+        }
+      </div>
+      {showCardDetails &&
+        <CardDetails card={card} />
       }
-    </div>
+    </>
   )
 }
 
