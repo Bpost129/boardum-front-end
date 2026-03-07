@@ -38,6 +38,10 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
   }
 
+  const closeDetails = () => {
+    setShowCardDetails(false)
+  }
+
   return (
     <>
       <div className={styles.card} ref={ref} data-dragging={isDragging}>
@@ -65,7 +69,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
         }
       </div>
       {showCardDetails &&
-        <CardDetails card={card} />
+        <CardDetails card={card} closeDetails={closeDetails} />
       }
     </>
   )
