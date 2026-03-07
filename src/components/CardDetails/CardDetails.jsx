@@ -22,6 +22,11 @@ const CardDetails = ({ card, closeDetails }) => {
           autoFocus
           />
         </section>
+        <section className={styles.menu}>
+          <button className={styles.menuBtn}>Move</button>
+          <button className={styles.menuBtn}>Copy</button>
+          <button className={styles.menuBtn}>Delete</button>
+        </section>
         <section className={styles.description}>
           <label htmlFor="description-input">Description</label>
           <textarea

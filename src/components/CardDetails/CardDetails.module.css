@@ -15,16 +15,14 @@
 }
 
 .cardDetailsForm {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.title, .description, .menu {
   display: flex;
   flex-direction: column;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-}
