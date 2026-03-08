@@ -1,28 +1,77 @@
 .cardDetails {
   position: absolute;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-
-  width: 1000px;
+  left: 20vw;
+  right: 20vw;
+  top: 60px;
   height: 750px;
-  background-color: rgba(85, 85, 85, 0.925);
+  width: 60vw;
+  z-index: 10;  
+  padding: 16px;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  top: 32px;
-  z-index: 10;  
+  background-color: rgba(85, 85, 85, 0.925);
 }
 
 .cardDetailsForm {
-  width: 400px;
+  width: 58vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 12px;
+  padding: 2px;
+
 }
 
-.title, .description, .menu {
+.title {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  height: 275px;
+}
+
+.title label {
+  font-size: 16px;
+  color: rgb(255, 255, 255, 0.75);
+  margin-bottom: 4px;
+}
+
+.title textarea {
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(46, 46, 46, 0.5);
+  color: white;
+  resize: none;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Red Hat Text", sans-serif;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+}
+
+.menu button {
+  width: 80px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  
+} 
+
+
+.formBtns {
+  align-self: center;
 }
 

@@ -23,6 +23,7 @@ const CardDetails = ({ card, closeDetails }) => {
           />
         </section>
         <section className={styles.menu}>
+          <label htmlFor="menu-input">Menu</label>
           <button className={styles.menuBtn}>Move</button>
           <button className={styles.menuBtn}>Copy</button>
           <button className={styles.menuBtn}>Delete</button>
@@ -38,7 +39,7 @@ const CardDetails = ({ card, closeDetails }) => {
           />
         </section>
         <section className={styles.formBtns}>
-          <button className={styles.submitBtn} type="submit">Edit</button>
+          <button className={styles.submitBtn} type="submit">Save Card</button>
           <button className={styles.cancelBtn} onClick={closeDetails}>X</button>
 
         </section>
