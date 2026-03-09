@@ -23,10 +23,18 @@ const CardDetails = ({ card, closeDetails }) => {
           />
         </section>
         <section className={styles.menu}>
-          <label htmlFor="menu-input">Menu</label>
-          <button className={styles.menuBtn}>Move</button>
-          <button className={styles.menuBtn}>Copy</button>
-          <button className={styles.menuBtn}>Delete</button>
+          <label htmlFor="label-button">
+            No Labels
+            <button className={styles.menuBtn}>Labels</button>
+          </label>
+          <label htmlFor="date-button">
+            No Due Date
+            <button className={styles.menuBtn}>Due Date</button>
+          </label>
+          <label htmlFor="image-button">
+            No Cover Image
+            <button className={styles.menuBtn}>Image</button>
+          </label>
         </section>
         <section className={styles.description}>
           <label htmlFor="description-input">Description</label>
