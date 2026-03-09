@@ -1,14 +1,23 @@
+import { useState } from 'react'
+
 import styles from './CardDetails.module.css'
 
-const CardDetails = ({ card, closeDetails }) => {
+const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) => {
+  const [editFormData, setEditFormData] = useState(card)
 
-  const onChange = () => {
-    console.log('change')
+  const handleSubmit = e => {
+    e.preventDefault()
+    handleUpdateCard(editFormData, listId, boardId)
+    closeDetails()
+  }
+
+  const handleChange = (e) => {
+    setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
   }
 
   return (
     <div className={styles.cardDetails}>
-      <form className={styles.cardDetailsForm} onSubmit='submit'>
+      <form className={styles.cardDetailsForm} onSubmit={handleSubmit}>
         <section className={styles.title}>
           <label htmlFor="title-input">Title</label>
           <textarea 
@@ -17,8 +26,8 @@ const CardDetails = ({ card, closeDetails }) => {
           name="title"
           id="title-input"
           placeholder={card.title}
-          value={card.title}
-          onChange={onChange}
+          value={editFormData.title}
+          onChange={handleChange}
           autoFocus
           />
         </section>
@@ -42,8 +51,8 @@ const CardDetails = ({ card, closeDetails }) => {
             name="description"
             id="description-input"
             placeholder={card.description || 'Add a description...'}
-            value={card.description}
-            onChange={onChange}
+            value={editFormData.description}
+            onChange={handleChange}
           />
         </section>
         <section className={styles.formBtns}>

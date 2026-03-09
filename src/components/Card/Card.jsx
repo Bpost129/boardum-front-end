@@ -69,7 +69,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
         }
       </div>
       {showCardDetails &&
-        <CardDetails card={card} closeDetails={closeDetails} />
+        <CardDetails card={card} closeDetails={closeDetails} handleUpdateCard={handleUpdateCard} boardId={boardId}listId={listId}/>
       }
     </>
   )
