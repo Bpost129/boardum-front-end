@@ -2,12 +2,12 @@ import { useState } from 'react'
 
 import styles from './CardDetails.module.css'
 
-const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) => {
+const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId, getLabelColor }) => {
   const [editFormData, setEditFormData] = useState(card)
-  const [showLabel, setShowLabel] = useState(false)
-  const [showDate, setShowDate] = useState(false)
-  const [showImage, setShowImage] = useState(false)
-  const [showLink, setShowLink] = useState(false)
+  const [showLabelForm, setShowLabelForm] = useState(false)
+  const [showDateForm, setShowDateForm] = useState(false)
+  const [showImageForm, setShowImageForm] = useState(false)
+  const [showLinkForm, setShowLinkForm] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -27,10 +27,12 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
   return (
     <div className={styles.cardDetails}>
       <form className={styles.cardDetailsForm} onSubmit={handleSubmit}>
+        {/* Save and Cancel Buttons */}
         <section className={styles.formBtns}>
           <button className={styles.submitBtn} type="submit">Save Card</button>
           <button className={styles.cancelBtn} onClick={closeDetails}>X</button>
         </section>
+        {/* Title Section */}
         <section className={styles.title}>
           <label htmlFor="title-input">Title</label>
           <textarea 
@@ -44,6 +46,7 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
           autoFocus
           />
         </section>
+        {/* Description Section */}
         <section className={styles.description}>
           <label htmlFor="description-input">Description</label>
           <textarea
@@ -54,36 +57,29 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
             onChange={handleChange}
           />
         </section>
+        {/* Menu Section */}
         <section className={styles.menu}>
+          {/* Label Section */}
           <label htmlFor="label-button">
-            <span className={styles.menuBtn} onClick={() => setShowLabel(!showLabel)}>
+            <span className={styles.menuBtn} onClick={() => setShowLabelForm(!showLabelForm)}>
               Label
             </span>
-            {card.label && 
-              !showLabel && <div>{card.label}</div>
-            }
-            {card.label && 
-              showLabel && 
-                <select name="label" id="color-select" value={editFormData.label} onChange={handleChange}>
-                  <option value="">No Label</option>
-                  <option value="Red">🔴</option>
-                  <option value="Blue">🔵</option>
-                  <option value="Green">🟢</option>
-                  <option value="Yellow">🟡</option>
-                  <option value="Orange">🟠</option>
-                  <option value="Purple">🟣</option>
-                </select>
-            }
+            {/* Label exists */}
+            {card.label && <div className={getLabelColor()}>{card.label}</div>}
+            {/* {card.label && 
+              showLabelForm && 
+                <div>{card.label}</div>
+            } */}
 
-
+            {/* No Label exists */}
             {!card.label && 
-              !showLabel && <div>No Label</div>
+              !showLabelForm && <div>No Label</div>
             }
             {!card.label && 
-              showLabel && 
+              showLabelForm && 
 
                 <div className={styles.menuLabelForm}>
-                  <select name="label" id="color-select" value={editFormData.label?.color} onChange={handleChange}>
+                  <select name="labelColor" id="labelColor-select" value={editFormData.labelColor} onChange={handleChange}>
                     <option value="Red">🔴</option>
                     <option value="Blue">🔵</option>
                     <option value="Green">🟢</option>
@@ -91,12 +87,13 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
                     <option value="Orange">🟠</option>
                     <option value="Purple">🟣</option>
                   </select>
-                  <input type="text" name="label" value={editFormData.label?.text} onChange={handleChange} />
+                  <input type="text" name="label" value={editFormData.label} onChange={handleChange} />
                   <button type="submit" onClick={handleSubmitMenuItem}>+</button>
                   
                 </div>
             }
           </label>
+          {/* Due Date Section */}
           <label htmlFor="date-button">
             <span className={styles.menuBtn}>Due Date</span>
             <div>No Due Date</div>

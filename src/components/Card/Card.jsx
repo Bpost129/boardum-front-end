@@ -23,7 +23,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
 
 
   const getLabelColor = () => {
-    switch (card.label?.color) {
+    switch (card.labelColor) {
       case 'Red':
         return 'red'
       case 'Blue':
@@ -91,7 +91,7 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
         }
       </div>
       {showCardDetails &&
-        <CardDetails card={card} closeDetails={closeDetails} handleUpdateCard={handleUpdateCard} boardId={boardId}listId={listId}/>
+        <CardDetails card={card} closeDetails={closeDetails} handleUpdateCard={handleUpdateCard} boardId={boardId}listId={listId} getLabelColor={getLabelColor} />
       }
     </>
   )
