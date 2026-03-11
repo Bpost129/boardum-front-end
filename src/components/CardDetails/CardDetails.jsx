@@ -37,32 +37,55 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
         </section>
         <section className={styles.menu}>
           <label htmlFor="label-button">
-            <i className={styles.menuBtn} onClick={() => setShowLabel(!showLabel)}>
+            <span className={styles.menuBtn} onClick={() => setShowLabel(!showLabel)}>
               Label
-            </i>
-            {!showLabel && <div>No Label</div>}
-            {showLabel && 
-              <select name="label" id="color-select" value={editFormData.label} onChange={handleChange}>
-                <option value="">No Label</option>
-                <option value="Red">🔴</option>
-                <option value="Blue">🔵</option>
-                <option value="Green">🟢</option>
-                <option value="Yellow">🟡</option>
-                <option value="Orange">🟠</option>
-                <option value="Purple">🟣</option>
-              </select>
+            </span>
+            {card.label && 
+              !showLabel && <div>{card.label}</div>
+            }
+            {card.label && 
+              showLabel && 
+                <select name="label" id="color-select" value={editFormData.label} onChange={handleChange}>
+                  <option value="">No Label</option>
+                  <option value="Red">🔴</option>
+                  <option value="Blue">🔵</option>
+                  <option value="Green">🟢</option>
+                  <option value="Yellow">🟡</option>
+                  <option value="Orange">🟠</option>
+                  <option value="Purple">🟣</option>
+                </select>
+            }
+
+
+            {!card.label && 
+              !showLabel && <div>No Label</div>
+            }
+            {!card.label && 
+              showLabel && 
+
+                <div className={styles.menuLabelForm}>
+                  <select name="label" id="color-select" value={editFormData.label?.color} onChange={handleChange}>
+                    <option value="Red">🔴</option>
+                    <option value="Blue">🔵</option>
+                    <option value="Green">🟢</option>
+                    <option value="Yellow">🟡</option>
+                    <option value="Orange">🟠</option>
+                    <option value="Purple">🟣</option>
+                  </select>
+                  <input type="text" name="label" value={editFormData.label?.text} onChange={handleChange} />
+                </div>
             }
           </label>
           <label htmlFor="date-button">
-            <button className={styles.menuBtn}>Due Date</button>
+            <span className={styles.menuBtn}>Due Date</span>
             No Due Date
           </label>
           <label htmlFor="image-button">
-            <button className={styles.menuBtn}>Image</button>
+            <span className={styles.menuBtn}>Image</span>
             No Cover Image
           </label>
           <label htmlFor="link-button">
-            <button className={styles.menuBtn}>Link</button>
+            <span className={styles.menuBtn}>Link</span>
             No Link
           </label>
         </section>
