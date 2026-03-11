@@ -14,7 +14,8 @@
   --list-color-blue: rgb(28, 28, 155);
   --list-color-green: rgb(17, 104, 17);
   --list-color-yellow: rgb(181, 181, 59);
-
+  --list-color-orange: rgb(198, 114, 62);
+  --list-color-purple: rgb(133, 59, 181);
 }
 
 .red {
@@ -28,6 +29,12 @@
 }
 .yellow {
   background-color: var(--list-color-yellow);
+}
+.orange {
+  background-color: var(--list-color-orange);
+}
+.purple {
+  background-color: var(--list-color-purple);
 }
 
 

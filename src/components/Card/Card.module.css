@@ -1,4 +1,4 @@
-.card {
+.cardMain {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -8,9 +8,24 @@
   height: fit-content;
   padding: 6px;
   border-radius: 12px;
-  margin: 0 12px;
+  /* margin: 0 12px; */
+  
+  background-color: rgb(106, 106, 106);
+}
 
-  background-color: rgba(98, 112, 107, 0.85);
+.label {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  height: fit-content;
+  padding-top: 5px;
+  /* background-color: rgba(98, 112, 107); */
+  /* background-color: cyan; */
+  width: 240px;
+  border-radius: 23px 23px 13px 13px;
+  
 }
 
 .cardTitle {
@@ -21,11 +36,11 @@
   cursor: pointer;
 }
 
-.card > .listOptions {
+.cardMain > .listOptions {
   visibility: hidden;
 }
 
-.card:hover > .listOptions {
+.cardMain:hover > .listOptions {
   visibility: visible;
 }
 
@@ -79,6 +94,9 @@
   justify-content: space-between;
   width: 240px;
   flex-wrap: wrap;
+  background-color: rgb(46, 46, 46, 0.5);
+  border-radius: 12px;
+  padding: 6px; 
 }
 
 

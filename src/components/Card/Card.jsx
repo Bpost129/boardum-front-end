@@ -21,6 +21,26 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
   const [editFormData, setEditFormData] = useState(card)
   const [showCardDetails, setShowCardDetails] = useState(false)
 
+
+  const getLabelColor = () => {
+    switch (card.label?.color) {
+      case 'Red':
+        return 'red'
+      case 'Blue':
+        return 'blue'
+      case 'Green':
+        return 'green'
+      case 'Yellow':
+        return 'yellow'
+      case 'Orange':
+        return 'orange'
+      case 'Purple':
+        return 'purple'
+      default:
+        return ''
+    }
+  }
+
   // keep local form state in sync if the card prop changes (e.g. list update)
   useEffect(() => {
     setEditFormData(card)
@@ -59,13 +79,15 @@ const Card = ({ card, listId, handleDeleteCard, handleUpdateCard,  id, index }) 
         }
 
         {!showEditCardForm &&
-          <>
+        <div className={`${styles.label} ${getLabelColor()}`}>
+          <div className={styles.cardMain}>
             <h5 className={styles.cardTitle} onClick={() => setShowEditCardForm(!showEditCardForm)}>{card.title}  </h5>
             <div className={styles.listOptions}>
               <span className={styles.optionsDelete} onClick={() => handleDeleteCard(card._id, listId, boardId)}><i className="fa-regular fa-square-minus"></i> DELETE</span>
               <span className={styles.optionsEdit} onClick={() => setShowCardDetails(!showCardDetails)}> <i className="fa-solid fa-pen fa-2xs" ></i> EDIT</span>
             </div>
-          </>
+          </div>
+        </div>
         }
       </div>
       {showCardDetails &&

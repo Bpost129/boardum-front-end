@@ -4,6 +4,10 @@ import styles from './CardDetails.module.css'
 
 const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) => {
   const [editFormData, setEditFormData] = useState(card)
+  const [showLabel, setShowLabel] = useState(false)
+  const [showDate, setShowDate] = useState(false)
+  const [showImage, setShowImage] = useState(false)
+  const [showLink, setShowLink] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -33,16 +37,33 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
         </section>
         <section className={styles.menu}>
           <label htmlFor="label-button">
-            No Label
-            <button className={styles.menuBtn}>Label</button>
+            <i className={styles.menuBtn} onClick={() => setShowLabel(!showLabel)}>
+              Label
+            </i>
+            {!showLabel && <div>No Label</div>}
+            {showLabel && 
+              <select name="label" id="color-select" value={editFormData.label} onChange={handleChange}>
+                <option value="">No Label</option>
+                <option value="Red">🔴</option>
+                <option value="Blue">🔵</option>
+                <option value="Green">🟢</option>
+                <option value="Yellow">🟡</option>
+                <option value="Orange">🟠</option>
+                <option value="Purple">🟣</option>
+              </select>
+            }
           </label>
           <label htmlFor="date-button">
-            No Due Date
             <button className={styles.menuBtn}>Due Date</button>
+            No Due Date
           </label>
           <label htmlFor="image-button">
-            No Cover Image
             <button className={styles.menuBtn}>Image</button>
+            No Cover Image
+          </label>
+          <label htmlFor="link-button">
+            <button className={styles.menuBtn}>Link</button>
+            No Link
           </label>
         </section>
         <section className={styles.description}>

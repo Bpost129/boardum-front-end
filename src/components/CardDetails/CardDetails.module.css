@@ -59,9 +59,10 @@
 
 .menu {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 48%;
   padding-top: 25px;
   gap: 12px;
@@ -69,8 +70,10 @@
 
 
 .menu label {
-  width: 90%;
+  width: 40%;
+  height: 82px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
@@ -80,7 +83,7 @@
 }
 
 
-.menu button {
+.menu i {
   min-width: 110px;
   height: 32px;
   font-size: 16px;
@@ -91,7 +94,7 @@
   border-radius: 4px;
   transition: background-color 250ms ease-in-out;
 }
-.menu button:hover {
+.menu i:hover {
   background-color: rgb(98, 112, 107);
   cursor: pointer;
 }
