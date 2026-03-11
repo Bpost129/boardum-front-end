@@ -33,8 +33,8 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
         </section>
         <section className={styles.menu}>
           <label htmlFor="label-button">
-            No Labels
-            <button className={styles.menuBtn}>Labels</button>
+            No Label
+            <button className={styles.menuBtn}>Label</button>
           </label>
           <label htmlFor="date-button">
             No Due Date
