@@ -6,7 +6,8 @@
   left: 30vw;
   right: 30vw;
   top: 60px;
-  height: 540px;
+  min-height: 380px;
+  max-height: 420px;
   width: 40vw;
   z-index: 10;  
   padding: 16px;
@@ -28,8 +29,9 @@
 .title {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 200px;
+  width: 100%;
+  height: 70px;
+  margin-top: 12px;
 }
 
 .title label {
@@ -40,7 +42,7 @@
 
 .title textarea {
   width: 100%;
-  height: 100%;
+  height: fit-content;
   padding: 6px;
   border-radius: 4px;
   border: none;
@@ -63,6 +65,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+
   width: 48%;
   padding-top: 25px;
   gap: 12px;
@@ -70,8 +73,8 @@
 
 
 .menu label {
-  width: 40%;
-  height: 82px;
+  width: 42%;
+  height: 96px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,6 +83,11 @@
   background-color: rgb(46, 46, 46, 0.5);
   padding: 8px;
   border-radius: 4px;
+}
+
+.menu label div {
+  color: whitesmoke;
+  margin-bottom: 8px;
 }
 
 
@@ -133,7 +141,7 @@
 .description {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   height: 250px;
 } 
 
@@ -163,15 +171,16 @@
 }
 
 .formBtns {
-  /* align-self: center; */
-
-  margin: auto;
+  position: absolute;
+  right: 16px;
+  top: 12px;
 }
 
 .formBtns button {
 
-  height: 36px;
-  padding: 0 16px;
+
+  height: 30px;
+  padding: 0 12px;
   margin: 0 3px;
   font-size: 16px;
   color: white;
@@ -183,5 +192,27 @@
 .formBtns button:hover {
   background-color: rgb(98, 112, 107);
   cursor: pointer;
+}
+
+.extras{
+  display: flex;
+  align-items: space-evenly;
+  justify-self: center;
+  gap: 12px;
+}
+
+.extras div {
+  width: 80px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  background-color: rgb(46, 46, 46, 0.5);
+  border: none;
+  border-radius: 4px;
 }
 

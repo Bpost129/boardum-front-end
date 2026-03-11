@@ -27,6 +27,10 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
   return (
     <div className={styles.cardDetails}>
       <form className={styles.cardDetailsForm} onSubmit={handleSubmit}>
+        <section className={styles.formBtns}>
+          <button className={styles.submitBtn} type="submit">Save Card</button>
+          <button className={styles.cancelBtn} onClick={closeDetails}>X</button>
+        </section>
         <section className={styles.title}>
           <label htmlFor="title-input">Title</label>
           <textarea 
@@ -38,6 +42,16 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
           value={editFormData.title}
           onChange={handleChange}
           autoFocus
+          />
+        </section>
+        <section className={styles.description}>
+          <label htmlFor="description-input">Description</label>
+          <textarea
+            name="description"
+            id="description-input"
+            placeholder={card.description || 'Add a description...'}
+            value={editFormData.description}
+            onChange={handleChange}
           />
         </section>
         <section className={styles.menu}>
@@ -85,31 +99,22 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
           </label>
           <label htmlFor="date-button">
             <span className={styles.menuBtn}>Due Date</span>
-            No Due Date
+            <div>No Due Date</div>
           </label>
           <label htmlFor="image-button">
             <span className={styles.menuBtn}>Image</span>
-            No Cover Image
+            <div>No Cover Image</div>
           </label>
           <label htmlFor="link-button">
             <span className={styles.menuBtn}>Link</span>
-            No Link
+            <div>No Link</div>
           </label>
         </section>
-        <section className={styles.description}>
-          <label htmlFor="description-input">Description</label>
-          <textarea
-            name="description"
-            id="description-input"
-            placeholder={card.description || 'Add a description...'}
-            value={editFormData.description}
-            onChange={handleChange}
-          />
-        </section>
-        <section className={styles.formBtns}>
-          <button className={styles.submitBtn} type="submit">Save Card</button>
-          <button className={styles.cancelBtn} onClick={closeDetails}>X</button>
-
+        <section className={styles.extras}>
+            <div>Label</div>
+            <div>Date</div>
+            <div>Image</div>
+            <div>Link</div>
         </section>
       </form>
     </div>
