@@ -15,6 +15,11 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
     closeDetails()
   }
 
+  const handleSubmitMenuItem = e => {
+    e.preventDefault()
+    handleUpdateCard(editFormData, listId, boardId)
+  }
+
   const handleChange = (e) => {
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value })
   }
@@ -73,6 +78,8 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId }) 
                     <option value="Purple">🟣</option>
                   </select>
                   <input type="text" name="label" value={editFormData.label?.text} onChange={handleChange} />
+                  <button type="submit" onClick={handleSubmitMenuItem}>+</button>
+                  
                 </div>
             }
           </label>
