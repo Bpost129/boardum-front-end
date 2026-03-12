@@ -65,11 +65,7 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId, ge
               Label
             </span>
             {/* Label exists */}
-            {card.label && <div className={getLabelColor()}>{card.label}</div>}
-            {/* {card.label && 
-              showLabelForm && 
-                <div>{card.label}</div>
-            } */}
+            {card.label && <div className={`${styles.label} ${getLabelColor()}`}>{card.label}</div>}
 
             {/* No Label exists */}
             {!card.label && 
