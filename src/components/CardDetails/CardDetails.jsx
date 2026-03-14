@@ -65,7 +65,17 @@ const CardDetails = ({ card, closeDetails, handleUpdateCard, listId, boardId, ge
               Label
             </span>
             {/* Label exists */}
-            {card.label && <div className={`${styles.label} ${getLabelColor()}`}>{card.label}</div>}
+            {card.label && 
+              <>
+                <div className={`${styles.label} ${getLabelColor()}`}>
+                  {card.label}
+                </div>
+                <button onClick={() => {
+                  setEditFormData({ ...editFormData, label: '', labelColor: '' })
+                  // setShowLabelForm(false)
+                }}>×</button>
+              </>
+            }
 
             {/* No Label exists */}
             {!card.label && 
